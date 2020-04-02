@@ -1,0 +1,565 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     27607,        557]
+NotebookOptionsPosition[     25700,        517]
+NotebookOutlinePosition[     26046,        532]
+CellTagsIndexPosition[     26003,        529]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Human_corona, other viruses and vertebrate: homological segment clustering\
+\>", "Title",
+ CellChangeTimes->{{3.793476909518813*^9, 
+  3.793476994041415*^9}},ExpressionUUID->"ea350368-f899-4d39-903c-\
+e0c4e31f8272"],
+
+Cell[CellGroupData[{
+
+Cell["k-means", "Section",
+ CellChangeTimes->{{3.7934305734128323`*^9, 
+  3.7934305917290688`*^9}},ExpressionUUID->"304b6e1e-2ac7-45da-8b35-\
+db309a47db00"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"base", "=", "\"\</home/kamano/\>\""}]], "Input",
+ CellChangeTimes->{{3.793909150992609*^9, 3.793909161520652*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"bc52c7d0-46d4-4f44-a883-01ae42004ea2"],
+
+Cell[BoxData["\<\"/home/kamano/\"\>"], "Output",
+ CellChangeTimes->{{3.793909162015049*^9, 3.793909167725275*^9}, 
+   3.793909501393005*^9},
+ CellLabel->"Out[2]=",ExpressionUUID->"6945903a-ef72-4a25-8d89-0ae4d452c04a"]
+}, Open  ]],
+
+Cell["2 bases", "Text",
+ CellChangeTimes->{{3.793909116977476*^9, 
+  3.793909129522895*^9}},ExpressionUUID->"e749819e-2185-4f5c-bff2-\
+43155c1668bd"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"cl", "[", "200", "]"}], "=", 
+   RowBox[{"Get", "[", 
+    RowBox[{
+    "base", "<>", "\"\<gitsrc/human_corona/mixFragment.Fa.C200.log\>\""}], 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7934302174059563`*^9, 3.793430250683992*^9}, {
+  3.793430283540208*^9, 3.7934302931939487`*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"ecfa3e2f-bfc0-4649-a4da-87f0a85b6778"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"cl", "[", 
+    RowBox[{"200", ",", "\"\<id\>\""}], "]"}], "=", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Drop", "[", 
+       RowBox[{"#", ",", "1"}], "]"}], "&"}], ",", 
+     RowBox[{"Drop", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"cl", "[", "200", "]"}], "[", 
+        RowBox[{"[", 
+         RowBox[{"3", ",", "4"}], "]"}], "]"}], ",", "1"}], "]"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.793430295856125*^9, 3.79343043382015*^9}},
+ CellLabel->"In[8]:=",ExpressionUUID->"dec5c2b6-611c-4435-ba5f-33d267cbd418"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Map", "[", 
+  RowBox[{"Length", ",", 
+   RowBox[{"cl", "[", 
+    RowBox[{"200", ",", "\"\<id\>\""}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.793431051065246*^9, 3.793431057216867*^9}},
+ CellLabel->"In[9]:=",ExpressionUUID->"a369d907-018e-4236-8704-10e8211e06c9"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "3", ",", "1", ",", "1", ",", "2", ",", "1", ",", "1", ",", "4", ",", "4", 
+   ",", "1", ",", "2", ",", "3", ",", "30", ",", "2", ",", "3", ",", "2", ",",
+    "3", ",", "4", ",", "1", ",", "1", ",", "2", ",", "2", ",", "2", ",", "1",
+    ",", "1", ",", "2", ",", "1", ",", "4", ",", "2", ",", "0", ",", "3", ",",
+    "3", ",", "2", ",", "2", ",", "3", ",", "3", ",", "1", ",", "2", ",", "1",
+    ",", "2", ",", "2", ",", "5", ",", "2", ",", "1", ",", "1", ",", "1", ",",
+    "2", ",", "1", ",", "5", ",", "2", ",", "1", ",", "4", ",", "1", ",", "5",
+    ",", "1", ",", "1", ",", "2", ",", "2", ",", "2", ",", "1", ",", "1", ",",
+    "2", ",", "1", ",", "1", ",", "1", ",", "2", ",", "1", ",", "3", ",", "0",
+    ",", "3", ",", "1", ",", "4", ",", "1", ",", "4", ",", "1", ",", "2", ",",
+    "2", ",", "4", ",", "1", ",", "2", ",", "1", ",", "7", ",", "2", ",", "4",
+    ",", "5", ",", "2", ",", "3", ",", "1", ",", "2", ",", "5", ",", "2", ",",
+    "8", ",", "4", ",", "1", ",", "1", ",", "2", ",", "3", ",", "2", ",", "3",
+    ",", "6", ",", "3", ",", "9", ",", "4", ",", "4", ",", "0", ",", "2", ",",
+    "6", ",", "1", ",", "3", ",", "1", ",", "6", ",", "4", ",", "4", ",", "9",
+    ",", "3", ",", "4", ",", "3", ",", "4", ",", "3", ",", "11", ",", "7", 
+   ",", "1", ",", "18", ",", "2", ",", "10", ",", "1", ",", "5", ",", "2", 
+   ",", "6", ",", "4", ",", "4", ",", "3", ",", "1", ",", "4", ",", "4", ",", 
+   "4", ",", "3", ",", "5", ",", "2", ",", "6", ",", "2", ",", "1", ",", "2", 
+   ",", "4", ",", "4", ",", "5", ",", "1", ",", "3", ",", "4", ",", "5", ",", 
+   "3", ",", "3", ",", "1", ",", "3", ",", "2", ",", "1", ",", "2", ",", "1", 
+   ",", "6", ",", "2", ",", "1", ",", "5", ",", "11", ",", "8", ",", "6", ",",
+    "7", ",", "1", ",", "4", ",", "8", ",", "2", ",", "6", ",", "2", ",", "3",
+    ",", "3", ",", "3", ",", "2", ",", "2", ",", "9", ",", "9", ",", "1", ",",
+    "0", ",", "0", ",", "5", ",", "4", ",", "7", ",", "2", ",", "5", ",", "1",
+    ",", "9", ",", "7", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",",
+    "6", ",", "20", ",", "5", ",", "3", ",", "1", ",", "7"}], "}"}]], "Output",\
+
+ CellChangeTimes->{{3.793431046032364*^9, 3.793431057642084*^9}, 
+   3.79343683078293*^9, 3.793437785932611*^9, 3.7934380441840878`*^9, 
+   3.793438106184812*^9, 3.7934768057771463`*^9, 3.7939091361481237`*^9, 
+   3.793909168741973*^9},
+ CellLabel->"Out[9]=",ExpressionUUID->"afdd18c5-f997-4254-b745-e4b601fbd345"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"mixFragment", "[", 
+   RowBox[{"[", 
+    RowBox[{
+     RowBox[{"cl", "[", 
+      RowBox[{"200", ",", "\"\<id\>\""}], "]"}], "[", 
+     RowBox[{"[", "12", "]"}], "]"}], "]"}], "]"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"you", " ", "should", " ", "evaluate", " ", "\"\<corona.nb\>\""}], 
+   " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.79343044371332*^9, 3.793430464729519*^9}, {
+  3.793430515505446*^9, 3.793430524561432*^9}, {3.793431069873146*^9, 
+  3.7934310703111763`*^9}, {3.7939093398835907`*^9, 
+  3.7939093695135117`*^9}},ExpressionUUID->"fa80b566-0af9-48fb-8210-\
+d57a1b13419f"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_004718.3| SARS coronavirus, complete genome           \
+Length = 29751   \"\>", ",", "\<\"Query: \"\>", ",", "\<\"26052\"\>", 
+     ",", "\<\"26089\"\>", ",", "\<\"Expect = 0.41\"\>", 
+     ",", "\<\"Identities = 34/38 (89%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"25927\"\>", 
+     ",", "\<\"tacagacactggtattgaaaatgctacattcttcatct\"\>", 
+     ",", "\<\"25964\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_025217.1| Bat Hp-betacoronavirus/Zhejiang2013, \
+complete genome           Length = 31491   \"\>", ",", "\<\"Query: \"\>", 
+     ",", "\<\"17827\"\>", ",", "\<\"17939\"\>", 
+     ",", "\<\"Expect = 0.007\"\>", ",", "\<\"Identities = 91/113 (80%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"18290\"\>", 
+     ",", "\<\"\
+caaactgtggactcatcacaaggttcagagtatgattatgtgattttcgcccagactacagatactgcacactcttgc\
+aatgttaataggtttaatgttgctatcacaagagc\"\>", ",", "\<\"18402\"\>"}], "}"}], ",", 
+   
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_034440.1| Bat coronavirus isolate PREDICT/PDF-2180, \
+complete genome           Length = 29642   \"\>", ",", "\<\"Query: \"\>", 
+     ",", "\<\"20848\"\>", ",", "\<\"20918\"\>", 
+     ",", "\<\"Expect = 3e-11\"\>", ",", "\<\"Identities = 63/71 (88%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"20568\"\>", 
+     ",", "\<\"\
+aatatgagagttattcattttggtgctggttcagataaaggtatcgcacctggtacctctgttttaagaca\"\>", 
+     ",", "\<\"20638\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_012936.1| Rat coronavirus Parker, complete genome     \
+      Length = 31250   \"\>", ",", "\<\"Query: \"\>", ",", "\<\"18472\"\>", 
+     ",", "\<\"18499\"\>", ",", "\<\"Expect = 6.4\"\>", 
+     ",", "\<\"Identities = 26/28 (92%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"18545\"\>", 
+     ",", "\<\"caatttaaacacctcgttccacttatgt\"\>", ",", "\<\"18572\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_001846.1| Mouse hepatitis virus strain MHV-A59 C12 \
+mutant, complete genome           Length = 31357   \"\>", 
+     ",", "\<\"Query: \"\>", ",", "\<\"17411\"\>", ",", "\<\"17462\"\>", 
+     ",", "\<\"Expect = 4e-07\"\>", ",", "\<\"Identities = 47/52 (90%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"17532\"\>", 
+     ",", "\<\"gtgctaagcattatgtgtatattggagaccctgcgcagttacctgcaccacg\"\>", 
+     ",", "\<\"17583\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_009021.1| Bat coronavirus HKU9-1, complete genome     \
+      Length = 29114   \"\>", ",", "\<\"Query: \"\>", ",", "\<\"15487\"\>", 
+     ",", "\<\"15539\"\>", ",", "\<\"Expect = 2e-12\"\>", 
+     ",", "\<\"Identities = 50/53 (94%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"14973\"\>", 
+     ",", "\<\"ggagattccacaactgcatatgctaatagtgtttttaatatttgtcaagctgt\"\>", 
+     ",", "\<\"15025\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_009021.1| Bat coronavirus HKU9-1, complete genome     \
+      Length = 29114   \"\>", ",", "\<\"Query: \"\>", ",", "\<\"13205\"\>", 
+     ",", "\<\"13275\"\>", ",", "\<\"Expect = 0.10\"\>", 
+     ",", "\<\"Identities = 59/71 (83%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"12691\"\>", 
+     ",", "\<\"\
+gccaatatagaccaagagtcctttggtggggcgtcatgctgtttgtactgtcgttgtcatatagaacatcc\"\>", 
+     ",", "\<\"12761\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_009021.1| Bat coronavirus HKU9-1, complete genome     \
+      Length = 29114   \"\>", ",", "\<\"Query: \"\>", ",", "\<\"14446\"\>", 
+     ",", "\<\"14498\"\>", ",", "\<\"Expect = 1.6\"\>", 
+     ",", "\<\"Identities = 45/53 (84%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"13932\"\>", 
+     ",", "\<\"gatggtgtgccgtttgtagtttctactggttaccattacagggagcttggtgt\"\>", 
+     ",", "\<\"13984\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_009021.1| Bat coronavirus HKU9-1, complete genome     \
+      Length = 29114   \"\>", ",", "\<\"Query: \"\>", ",", "\<\"29372\"\>", 
+     ",", "\<\"29399\"\>", ",", "\<\"Expect = 6.4\"\>", 
+     ",", "\<\"Identities = 26/28 (92%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"27553\"\>", 
+     ",", "\<\"gagcccaaaaaggataaaaagaagaagg\"\>", ",", "\<\"27580\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_017083.1| Rabbit coronavirus HKU14, complete genome   \
+        Length = 31100   \"\>", ",", "\<\"Query: \"\>", ",", "\<\"19229\"\>", 
+     ",", "\<\"19322\"\>", ",", "\<\"Expect = 1e-10\"\>", 
+     ",", "\<\"Identities = 80/94 (85%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"19247\"\>", 
+     ",", "\<\"\
+ttgtatgtagatttgacactagagtgttgaataatttaaaccttcctggctgtaatggtggaagtttgtatgttaata\
+aacatgcattccacac\"\>", ",", "\<\"19340\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_017083.1| Rabbit coronavirus HKU14, complete genome   \
+        Length = 31100   \"\>", ",", "\<\"Query: \"\>", ",", "\<\"14062\"\>", 
+     ",", "\<\"14104\"\>", ",", "\<\"Expect = 0.10\"\>", 
+     ",", "\<\"Identities = 38/43 (88%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"14116\"\>", 
+     ",", "\<\"gataatcaagatttgaatggtatgtggtatgattttggtgatt\"\>", 
+     ",", "\<\"14158\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_019843.3| Middle East respiratory syndrome \
+coronavirus, complete genome           Length = 30119   \"\>", 
+     ",", "\<\"Query: \"\>", ",", "\<\"15280\"\>", ",", "\<\"15323\"\>", 
+     ",", "\<\"Expect = 4e-07\"\>", ",", "\<\"Identities = 41/44 (93%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"15251\"\>", 
+     ",", "\<\"cttatgggttgggattaccctaagtgtgatagagctatgcctaa\"\>", 
+     ",", "\<\"15294\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_016996.1| Common-moorhen coronavirus HKU21, complete \
+genome           Length = 26223   \"\>", ",", "\<\"Query: \"\>", 
+     ",", "\<\"16024\"\>", ",", "\<\"16053\"\>", 
+     ",", "\<\"Expect = 0.002\"\>", ",", "\<\"Identities = 29/30 (96%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"13620\"\>", 
+     ",", "\<\"ttagctattgatgcttacccacttactaaa\"\>", ",", "\<\"13649\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_009019.1| Bat coronavirus HKU4-1, complete genome     \
+      Length = 30286   \"\>", ",", "\<\"Query: \"\>", ",", "\<\"14299\"\>", 
+     ",", "\<\"14339\"\>", ",", "\<\"Expect = 1e-07\"\>", 
+     ",", "\<\"Identities = 39/41 (95%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"14390\"\>", 
+     ",", "\<\"tttaaatattgggatcaaacataccaccctaattgtgttaa\"\>", 
+     ",", "\<\"14430\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_009019.1| Bat coronavirus HKU4-1, complete genome     \
+      Length = 30286   \"\>", ",", "\<\"Query: \"\>", ",", "\<\"19265\"\>", 
+     ",", "\<\"19313\"\>", ",", "\<\"Expect = 1e-07\"\>", 
+     ",", "\<\"Identities = 45/49 (91%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"19332\"\>", 
+     ",", "\<\"ttaatttgcctggttgtaatggtggcagtttgtatgttaacaaacatgc\"\>", 
+     ",", "\<\"19380\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_009019.1| Bat coronavirus HKU4-1, complete genome     \
+      Length = 30286   \"\>", ",", "\<\"Query: \"\>", ",", "\<\"15490\"\>", 
+     ",", "\<\"15527\"\>", ",", "\<\"Expect = 0.002\"\>", 
+     ",", "\<\"Identities = 35/38 (92%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"15581\"\>", 
+     ",", "\<\"gatgcaactactgcttatgccaatagtgtttttaacat\"\>", 
+     ",", "\<\"15618\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_009019.1| Bat coronavirus HKU4-1, complete genome     \
+      Length = 30286   \"\>", ",", "\<\"Query: \"\>", ",", "\<\"15796\"\>", 
+     ",", "\<\"15830\"\>", ",", "\<\"Expect = 0.10\"\>", 
+     ",", "\<\"Identities = 32/35 (91%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"15887\"\>", 
+     ",", "\<\"ctttattatcaaaataatgtctttatgtcagaagc\"\>", 
+     ",", "\<\"15921\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_009019.1| Bat coronavirus HKU4-1, complete genome     \
+      Length = 30286   \"\>", ",", "\<\"Query: \"\>", ",", "\<\"20494\"\>", 
+     ",", "\<\"20528\"\>", ",", "\<\"Expect = 0.10\"\>", 
+     ",", "\<\"Identities = 32/35 (91%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"20552\"\>", 
+     ",", "\<\"tgttctgttattgatttaagacttgatgactttgt\"\>", 
+     ",", "\<\"20586\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_009019.1| Bat coronavirus HKU4-1, complete genome     \
+      Length = 30286   \"\>", ",", "\<\"Query: \"\>", ",", "\<\"18346\"\>", 
+     ",", "\<\"18383\"\>", ",", "\<\"Expect = 0.41\"\>", 
+     ",", "\<\"Identities = 34/38 (89%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"18428\"\>", 
+     ",", "\<\"accaatgtgcctttacagttaggattttctacaggtgt\"\>", 
+     ",", "\<\"18465\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_009019.1| Bat coronavirus HKU4-1, complete genome     \
+      Length = 30286   \"\>", ",", "\<\"Query: \"\>", ",", "\<\"19422\"\>", 
+     ",", "\<\"19487\"\>", ",", "\<\"Expect = 0.41\"\>", 
+     ",", "\<\"Identities = 55/66 (83%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"19492\"\>", 
+     ",", "\<\"\
+agatatagactatgtgccacttaaatctgctgtttgtataacagcttgtaatttaggtggagctgt\"\>", 
+     ",", "\<\"19557\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_009019.1| Bat coronavirus HKU4-1, complete genome     \
+      Length = 30286   \"\>", ",", "\<\"Query: \"\>", ",", "\<\"21323\"\>", 
+     ",", "\<\"21368\"\>", ",", "\<\"Expect = 0.41\"\>", 
+     ",", "\<\"Identities = 40/46 (86%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"21381\"\>", 
+     ",", "\<\"atgttatgcatgccaattatatattttggagaaattcaactccaat\"\>", 
+     ",", "\<\"21426\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_009019.1| Bat coronavirus HKU4-1, complete genome     \
+      Length = 30286   \"\>", ",", "\<\"Query: \"\>", ",", "\<\"15283\"\>", 
+     ",", "\<\"15323\"\>", ",", "\<\"Expect = 1.6\"\>", 
+     ",", "\<\"Identities = 36/41 (87%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"15374\"\>", 
+     ",", "\<\"atgggttgggattaccctaagtgtgatcgtgctatgcctaa\"\>", 
+     ",", "\<\"15414\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_009019.1| Bat coronavirus HKU4-1, complete genome     \
+      Length = 30286   \"\>", ",", "\<\"Query: \"\>", ",", "\<\"17751\"\>", 
+     ",", "\<\"17783\"\>", ",", "\<\"Expect = 1.6\"\>", 
+     ",", "\<\"Identities = 30/33 (90%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"17842\"\>", 
+     ",", "\<\"ttggagtaaagcagtatttatttcaccttataa\"\>", ",", "\<\"17874\"\>"}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_009019.1| Bat coronavirus HKU4-1, complete genome     \
+      Length = 30286   \"\>", ",", "\<\"Query: \"\>", ",", "\<\"17830\"\>", 
+     ",", "\<\"17858\"\>", ",", "\<\"Expect = 1.6\"\>", 
+     ",", "\<\"Identities = 27/29 (93%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"17921\"\>", 
+     ",", "\<\"actgttgattcttcacagggctctgaata\"\>", ",", "\<\"17949\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_035191.1| Wencheng Sm shrew coronavirus isolate \
+Xingguo-101 ORF1ab polyprotein,              spike glycoprotein, envelope \
+protein, membrane protein,              and nucleocapsid protein genes, \
+complete cds           Length = 25995   \"\>", ",", "\<\"Query: \"\>", 
+     ",", "\<\"15028\"\>", ",", "\<\"15088\"\>", 
+     ",", "\<\"Expect = 1e-07\"\>", ",", "\<\"Identities = 54/61 (88%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"12758\"\>", 
+     ",", "\<\"tatacaaagcgtaatgtggttcctacaatgacgcaaatgaatcttaagtatgccattagtg\"\
+\>", ",", "\<\"12818\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_035191.1| Wencheng Sm shrew coronavirus isolate \
+Xingguo-101 ORF1ab polyprotein,              spike glycoprotein, envelope \
+protein, membrane protein,              and nucleocapsid protein genes, \
+complete cds           Length = 25995   \"\>", ",", "\<\"Query: \"\>", 
+     ",", "\<\"14045\"\>", ",", "\<\"14105\"\>", 
+     ",", "\<\"Expect = 3e-05\"\>", ",", "\<\"Identities = 53/61 (86%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"11772\"\>", 
+     ",", "\<\"ttggtgtgttgacattagataatcaagatttaaatggtaatttttatgattttggtgattt\"\
+\>", ",", "\<\"11832\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_035191.1| Wencheng Sm shrew coronavirus isolate \
+Xingguo-101 ORF1ab polyprotein,              spike glycoprotein, envelope \
+protein, membrane protein,              and nucleocapsid protein genes, \
+complete cds           Length = 25995   \"\>", ",", "\<\"Query: \"\>", 
+     ",", "\<\"15859\"\>", ",", "\<\"15890\"\>", 
+     ",", "\<\"Expect = 1e-04\"\>", ",", "\<\"Identities = 31/32 (96%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"13589\"\>", 
+     ",", "\<\"aaaggacctcatgaattttgttctcaacatac\"\>", ",", "\<\"13620\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_035191.1| Wencheng Sm shrew coronavirus isolate \
+Xingguo-101 ORF1ab polyprotein,              spike glycoprotein, envelope \
+protein, membrane protein,              and nucleocapsid protein genes, \
+complete cds           Length = 25995   \"\>", ",", "\<\"Query: \"\>", 
+     ",", "\<\"17224\"\>", ",", "\<\"17273\"\>", 
+     ",", "\<\"Expect = 0.002\"\>", ",", "\<\"Identities = 44/50 (88%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"14951\"\>", 
+     ",", "\<\"tgtagtagaataatacctgctagagcacgtgtagaatgttttgataaatt\"\>", 
+     ",", "\<\"15000\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_035191.1| Wencheng Sm shrew coronavirus isolate \
+Xingguo-101 ORF1ab polyprotein,              spike glycoprotein, envelope \
+protein, membrane protein,              and nucleocapsid protein genes, \
+complete cds           Length = 25995   \"\>", ",", "\<\"Query: \"\>", 
+     ",", "\<\"17587\"\>", ",", "\<\"17616\"\>", ",", "\<\"Expect = 0.41\"\>",
+      ",", "\<\"Identities = 28/30 (93%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"15314\"\>", 
+     ",", "\<\"actgttagtgctttggtttatgaaaataag\"\>", ",", "\<\"15343\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ref|NC_035191.1| Wencheng Sm shrew coronavirus isolate \
+Xingguo-101 ORF1ab polyprotein,              spike glycoprotein, envelope \
+protein, membrane protein,              and nucleocapsid protein genes, \
+complete cds           Length = 25995   \"\>", ",", "\<\"Query: \"\>", 
+     ",", "\<\"13073\"\>", ",", "\<\"13104\"\>", ",", "\<\"Expect = 6.4\"\>", 
+     ",", "\<\"Identities = 29/32 (90%)\"\>", 
+     ",", "\<\"Strand = Plus / Plus\"\>", ",", "\<\"10821\"\>", 
+     ",", "\<\"tgtgcttttgctgttgatcccgctaaagctta\"\>", ",", "\<\"10852\"\>"}], 
+    "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.793430458217423*^9, {3.793430516199033*^9, 3.7934305248531933`*^9}, 
+   3.793431070996438*^9, 3.793436830801136*^9, 3.7934377859460163`*^9, 
+   3.793438044198916*^9, 3.793438106219799*^9, 3.7934768058447933`*^9, 
+   3.7939091366869392`*^9, 3.79390916927987*^9, 3.7939093371058292`*^9},
+ CellLabel->
+  "Out[224]=",ExpressionUUID->"d2bd5b6a-9c8f-4e26-aaca-3eaa75b5d47c"]
+}, Closed]],
+
+Cell["7 bases", "Text",
+ CellChangeTimes->{{3.793909116977476*^9, 3.793909129522895*^9}, {
+  3.7939094616337423`*^9, 
+  3.793909462305373*^9}},ExpressionUUID->"f029f463-46e8-4dcd-84e2-\
+db7407173377"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"cl", "[", 
+    RowBox[{"\"\<p7\>\"", ",", "200"}], "]"}], "=", 
+   RowBox[{"Get", "[", 
+    RowBox[{
+    "base", "<>", "\"\<gitsrc/human_corona/mixFragment.Fa.p7.C200.log\>\""}], 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7934302174059563`*^9, 3.793430250683992*^9}, {
+  3.793430283540208*^9, 3.7934302931939487`*^9}, {3.793909466220549*^9, 
+  3.793909492858902*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"655994ff-5888-420c-8edd-89f285a6f9a2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"cl", "[", 
+    RowBox[{"\"\<p7\>\"", ",", "200", ",", "\"\<id\>\""}], "]"}], "=", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Drop", "[", 
+       RowBox[{"#", ",", "1"}], "]"}], "&"}], ",", 
+     RowBox[{"Drop", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"cl", "[", 
+         RowBox[{"\"\<p7\>\"", ",", "200"}], "]"}], "[", 
+        RowBox[{"[", 
+         RowBox[{"3", ",", "4"}], "]"}], "]"}], ",", "1"}], "]"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.793430295856125*^9, 3.79343043382015*^9}, {
+  3.793909515717539*^9, 3.7939095246829233`*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"c60b37a9-cf14-4371-a870-ebca83c32074"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Map", "[", 
+  RowBox[{"Length", ",", 
+   RowBox[{"cl", "[", 
+    RowBox[{"\"\<p7\>\"", ",", "200", ",", "\"\<id\>\""}], "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.793431051065246*^9, 3.793431057216867*^9}, {
+  3.793909533413826*^9, 3.793909535842451*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"2bffc1db-9a3e-4ad9-bbb4-d8482b9175f4"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "28", ",", "8", ",", "7", ",", "13", ",", "15", ",", "6", ",", "67", ",", 
+   "6", ",", "8", ",", "2", ",", "4", ",", "3", ",", "1", ",", "9", ",", "1", 
+   ",", "14", ",", "12", ",", "4", ",", "5", ",", "6", ",", "6", ",", "2", 
+   ",", "5", ",", "2", ",", "2", ",", "7", ",", "3", ",", "1", ",", "9", ",", 
+   "8", ",", "2", ",", "3", ",", "1", ",", "3", ",", "6", ",", "5", ",", "3", 
+   ",", "1", ",", "1", ",", "2", ",", "1", ",", "2", ",", "2", ",", "7", ",", 
+   "8", ",", "5", ",", "2", ",", "17", ",", "5", ",", "3", ",", "6", ",", "1",
+    ",", "5", ",", "3", ",", "3", ",", "3", ",", "2", ",", "3", ",", "0", ",",
+    "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0",
+    ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",",
+    "17", ",", "0", ",", "0", ",", "0", ",", "0", ",", "5", ",", "6", ",", 
+   "4", ",", "1", ",", "7", ",", "1", ",", "1", ",", "3", ",", "5", ",", "9", 
+   ",", "1", ",", "1", ",", "1", ",", "2", ",", "2", ",", "5", ",", "2", ",", 
+   "4", ",", "5", ",", "1", ",", "2", ",", "2", ",", "3", ",", "1", ",", "1", 
+   ",", "2", ",", "1", ",", "5", ",", "1", ",", "1", ",", "1", ",", "1", ",", 
+   "3", ",", "4", ",", "1", ",", "2", ",", "7", ",", "3", ",", "4", ",", "1", 
+   ",", "2", ",", "2", ",", "1", ",", "1", ",", "1", ",", "2", ",", "2", ",", 
+   "0", ",", "0", ",", "3", ",", "1", ",", "1", ",", "0", ",", "3", ",", "2", 
+   ",", "2", ",", "1", ",", "1", ",", "0", ",", "2", ",", "1", ",", "3", ",", 
+   "3", ",", "2", ",", "2", ",", "1", ",", "1", ",", "2", ",", "2", ",", "1", 
+   ",", "1", ",", "1", ",", "2", ",", "5", ",", "4", ",", "1", ",", "1", ",", 
+   "1", ",", "2", ",", "1", ",", "1", ",", "1", ",", "2", ",", "2", ",", "1", 
+   ",", "1", ",", "1", ",", "1", ",", "1", ",", "12", ",", "3", ",", "6", ",",
+    "5", ",", "5", ",", "2", ",", "4", ",", "4", ",", "2", ",", "5", ",", "4",
+    ",", "2", ",", "1", ",", "2", ",", "1", ",", "3", ",", "2", ",", "1", ",",
+    "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1",
+    ",", "3", ",", "6", ",", "2", ",", "3", ",", "4", ",", "4"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.793431046032364*^9, 3.793431057642084*^9}, 
+   3.79343683078293*^9, 3.793437785932611*^9, 3.7934380441840878`*^9, 
+   3.793438106184812*^9, 3.7934768057771463`*^9, 3.7939091361481237`*^9, 
+   3.793909168741973*^9, 3.7939095362315693`*^9},
+ CellLabel->"Out[5]=",ExpressionUUID->"9b1e81a9-66c3-4006-8e52-486233a3af67"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 787},
+WindowMargins->{{Automatic, 78}, {Automatic, 104}},
+FrontEndVersion->"12.0 for Linux x86 (64-bit) (2019\:5e745\:67083\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 225, 5, 225, "Title",ExpressionUUID->"ea350368-f899-4d39-903c-e0c4e31f8272"],
+Cell[CellGroupData[{
+Cell[830, 31, 156, 3, 68, "Section",ExpressionUUID->"304b6e1e-2ac7-45da-8b35-db309a47db00"],
+Cell[CellGroupData[{
+Cell[1011, 38, 216, 3, 31, "Input",ExpressionUUID->"bc52c7d0-46d4-4f44-a883-01ae42004ea2"],
+Cell[1230, 43, 218, 3, 35, "Output",ExpressionUUID->"6945903a-ef72-4a25-8d89-0ae4d452c04a"]
+}, Open  ]],
+Cell[1463, 49, 149, 3, 36, "Text",ExpressionUUID->"e749819e-2185-4f5c-bff2-43155c1668bd"],
+Cell[1615, 54, 416, 10, 50, "Input",ExpressionUUID->"ecfa3e2f-bfc0-4649-a4da-87f0a85b6778"],
+Cell[2034, 66, 609, 18, 50, "Input",ExpressionUUID->"dec5c2b6-611c-4435-ba5f-33d267cbd418"],
+Cell[CellGroupData[{
+Cell[2668, 88, 294, 6, 50, "Input",ExpressionUUID->"a369d907-018e-4236-8704-10e8211e06c9"],
+Cell[2965, 96, 2483, 35, 174, "Output",ExpressionUUID->"afdd18c5-f997-4254-b745-e4b601fbd345"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5485, 136, 626, 15, 31, "Input",ExpressionUUID->"fa80b566-0af9-48fb-8210-d57a1b13419f"],
+Cell[6114, 153, 15201, 267, 3095, "Output",ExpressionUUID->"d2bd5b6a-9c8f-4e26-aaca-3eaa75b5d47c"]
+}, Closed]],
+Cell[21330, 423, 200, 4, 32, "Text",ExpressionUUID->"f029f463-46e8-4dcd-84e2-db7407173377"],
+Cell[21533, 429, 502, 12, 50, "Input",ExpressionUUID->"655994ff-5888-420c-8edd-89f285a6f9a2"],
+Cell[22038, 443, 718, 20, 50, "Input",ExpressionUUID->"c60b37a9-cf14-4371-a870-ebca83c32074"],
+Cell[CellGroupData[{
+Cell[22781, 467, 365, 8, 50, "Input",ExpressionUUID->"2bffc1db-9a3e-4ad9-bbb4-d8482b9175f4"],
+Cell[23149, 477, 2511, 35, 174, "Output",ExpressionUUID->"9b1e81a9-66c3-4006-8e52-486233a3af67"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
