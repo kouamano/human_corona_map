@@ -1,0 +1,25 @@
+# human corona virus 比較ゲノム (1)
+# corona virus genome を Virus ゲノムセットおよびいくつかのVertebrateに対して検索
+## 対象
+### to Virus : 9570種のVirusカテゴリのシークエンス
+### to 上記でhitしたVirusの宿主となる主なVertebrateゲノム
+- 生物種：
+-- Vertebrate (*が検索済み) : Bat*, Human*, Rat, Mouse*, Rabbit*, Cat*, Beluga*, Turkey*, Swine(Porcine)*, Sparrow, Pigeon*, Magpie-robin, Munia, Mink, Ferret*, Camel*, Goose, Wigeon, Ovine, Canine*, 
+## 方法
+- DB: makeblastdb -dbtype nucl; full-seq
+- blast search: magablast -W 10
+- Query: human corona full-seq
+### Vertbrate に対する検索において、20~30base程度のhit長が多数（20箇所/1生物種）みられる。
+### これらのフラグメントに注目してシークエンス分析を行う。
+### 出現箇所
+- ORFの内/外
+- 繰り返し配列内/外
+- promoter領域か https://epd.epfl.ch//index.php
+- フラグメントのクラスタリング
+-- オリゴヌクレオチド頻度クラスタリング
+-- クラスごとのコンセンサス配列（可能なら）
+#### クラスタリング
+fasta2matrix if=mixFragment.Fa s=3 g=1 +H > mixFragment.Fa.3.sv
+fasta2matrix if=mixFragment.Fa s=2 g=1 -p +H > mixFragment.Fa.p.sv
+soc-init if=mixFragment.Fa.p.sv of=mixFragment.Fa.p.cv frac=200 node=Central
+soc-lm sf=mixFragment.Fa.p.sv cf=mixFragment.Fa.p.cv rate=0.95 of=mixFragment.Fa.p.C200.out lf=mixFragment.Fa.p.C200.log

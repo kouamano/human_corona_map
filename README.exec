@@ -1,0 +1,107 @@
+# プレテスト
+megablast -d /BANK/genome/DB/VirusW25 -i /BANK/genome/human_corona/Wuhan_corona.fna.W25.pre -W 20 -a 20 > 25_25_W20.mega
+megablast -d /BANK/genome/DB/VirusW25 -i /BANK/genome/human_corona/Wuhan_corona.fna.W25.pre -W 15 -a 20 > 25_25_W15.mega
+megablast -d /BANK/genome/DB/VirusW25 -i /BANK/genome/human_corona/Wuhan_corona.fna.W25.pre -W 10 -a 20 > 25_25_W10.mega
+# Virus
+## DB: window:25 OW:0
+### Q: window:25 OW:0
+/home/kamano/gitsrc/utility/bio+informatics/bin/fragment bf=Wuhan_corona.fna S=25 G=25 H='>Wuhan-corona|QueryFrame_' cs=1 > Wuhan_corona.fna.W25.query
+### Q: window:25 OW:5
+/home/kamano/gitsrc/utility/bio+informatics/bin/fragment bf=Wuhan_corona.fna S=25 G=5 H='>Wuhan-corona|QueryFrame_' cs=1 > Wuhan_corona.fna.W25.5.query
+### Hit-len: over 10
+megablast -d /BANK/genome/DB/VirusW25 -i /BANK/genome/human_corona/Wuhan_corona.fna.W25.5.query -W 10 -a 20 > 25_25.5_W10.mega
+### 情報付加
+/home/kamano/gitsrc/utility/bio+informatics/add_srcINFO_blastout.pl /BANK/genome/Virus/All.fna.W25.pre.seq 25_25.5_W10.mega > /BANK/genome/human_corona/25_25.5_W10.mega+
+### DBのウイルス種ごとにHitを集約
+/home/kamano/gitsrc/utility/bio+informatics/make_pair1liner_blast.pl 25_25.5_W10.mega+ | sort | /home/kamano/gitsrc/utility/bio+informatics/restore_pair1liner.pl > /BANK/genome/human_corona/25_25.5_W10.mega+.sortbydb
+## DB: FULL
+### Q: window:25 OW:5
+megablast -d /BANK/genome/DB/Virus.db -i /BANK/genome/human_corona/Wuhan_corona.fna.W25.5.query -W 10 -a 20 > /BANK/genome/human_corona/FULL_25.5_W10.mega
+### 情報付加(単に'>' => ':>')
+sed -e 's/>/:>/g' FULL_25.5_W10.mega > FULL_25.5_W10.mega+
+### DBのウイルス種ごとにHitを集約
+/home/kamano/gitsrc/utility/bio+informatics/make_pair1liner_blast.pl FULL_25.5_W10.mega+ | sort | /home/kamano/gitsrc/utility/bio+informatics/restore_pair1liner.pl > /BANK/genome/human_corona/FULL_25.5_W10.mega+.sortbydb
+### Q: FULL
+megablast -d /BANK/genome/DB/Virus.db -i /BANK/genome/human_corona/Wuhan_corona.fna -W 10 -a 20 > /BANK/genome/human_corona/FULL_FULL_W10.mega
+
+
+# Vertebra
+## DB: Camel-FULL
+### Q: window:25 OW:5
+megablast -d /BANK/genome/DB/ArabianCamel -i /BANK/genome/human_corona/Wuhan_corona.fna.W25.5.query -W 10 -a 4 > /BANK/genome/human_corona/Camel-FULL_25.5_W10.mega &
+### Q: FULL
+megablast -d /BANK/genome/DB/ArabianCamel -i /BANK/genome/human_corona/Wuhan_corona.fna -W 10 -a 4 > /BANK/genome/human_corona/Camel-FULL_FULL_W10.mega &
+
+## DB: Bat-FULL
+### Q: window:25 OW:5
+megablast -d /BANK/genome/DB/Bat_shotgun -i /BANK/genome/human_corona/Wuhan_corona.fna.W25.5.query -W 10 -a 4 > /BANK/genome/human_corona/Bat-FULL_25.5_W10.mega &
+### Q: FULL
+megablast -d /BANK/genome/DB/Bat_shotgun -i /BANK/genome/human_corona/Wuhan_corona.fna -W 10 -a 4 > /BANK/genome/human_corona/Bat-FULL_FULL_W10.mega &
+
+## DB: Beluga-FULL
+### Q: window:25 OW:5
+megablast -d /BANK/genome/DB/Beluga_shotgun -i /BANK/genome/human_corona/Wuhan_corona.fna.W25.5.query -W 10 -a 4 > /BANK/genome/human_corona/Beluga-FULL_25.5_W10.mega &
+### Q: FULL
+megablast -d /BANK/genome/DB/Beluga_shotgun -i /BANK/genome/human_corona/Wuhan_corona.fna -W 10 -a 4 > /BANK/genome/human_corona/Beluga-FULL_FULL_W10.mega &
+
+## DB: C_lupus_familiaris-FULL
+### Q: FULL
+megablast -d /BANK/genome/DB/C_lupus_familiaris -i /BANK/genome/human_corona/Wuhan_corona.fna -W 10 -a 4 > /BANK/genome/human_corona/C_lupus_familiaris-FULL_FULL_W10.mega &
+
+## DB: C_lupus_familiaris-FULL
+### Q: FULL
+megablast -d /BANK/genome/DB/Cat -i /BANK/genome/human_corona/Wuhan_corona.fna -W 10 -a 4 > /BANK/genome/human_corona/Cat-FULL_FULL_W10.mega &
+
+## DB: Ferret-FULL
+### Q: FULL
+megablast -d /BANK/genome/DB/Ferret -i /BANK/genome/human_corona/Wuhan_corona.fna -W 10 -a 4 > /BANK/genome/human_corona/Ferret-FULL_FULL_W10.mega &
+
+## DB: Human-FULL
+### Q: window:25 OW:5
+megablast -d /BANK/genome/DB/Human -i /BANK/genome/human_corona/Wuhan_corona.fna.W25.5.query -W 10 -a 4 > /BANK/genome/human_corona/Human-FULL_25.5_W10.mega
+### Q: FULL
+megablast -d /BANK/genome/DB/Human -i /BANK/genome/human_corona/Wuhan_corona.fna -W 10 -a 4 > /BANK/genome/human_corona/Human-FULL_FULL_W10.mega &
+
+## DB: Mouse-FULL
+### Q: window:25 OW:5
+megablast -d /BANK/genome/DB/Mouse -i /BANK/genome/human_corona/Wuhan_corona.fna.W25.5.query -a 4 -W 10 > /BANK/genome/human_corona/Mouse-FULL_25.5_W10.mega &
+### Q: FULL
+megablast -d /BANK/genome/DB/Mouse -i /BANK/genome/human_corona/Wuhan_corona.fna -a 4 -W 10 > /BANK/genome/human_corona/Mouse-FULL_FULL_W10.mega &
+
+## DB: R_sinicus-FULL
+### Q: FULL
+megablast -d /BANK/genome/DB/R_sinicus -i /BANK/genome/human_corona/Wuhan_corona.fna -W 10 -a 4 > /BANK/genome/human_corona/R_sinicus-FULL_FULL_W10.mega &
+
+## DB: Rabbit-FULL
+### Q: window:25 OW:5
+megablast -d /BANK/genome/DB/Rabbit -i /BANK/genome/human_corona/Wuhan_corona.fna.W25.5.query -a 4 -W 10 > /BANK/genome/human_corona/Rabbit-FULL_25.5_W10.mega &
+### Q: FULL
+megablast -d /BANK/genome/DB/Rabbit -i /BANK/genome/human_corona/Wuhan_corona.fna -a 4 -W 10 > /BANK/genome/human_corona/Rabbit-FULL_FULL_W10.mega &
+
+## DB: RockPigeon-FULL
+### Q: window:25 OW:5
+megablast -d /BANK/genome/DB/RockPigeon_shotgun -i /BANK/genome/human_corona/Wuhan_corona.fna.W25.5.query -a 4 -W 10 > /BANK/genome/human_corona/RockPigeon-FULL_25.5_W10.mega &
+### Q: FULL
+megablast -d /BANK/genome/DB/RockPigeon_shotgun -i /BANK/genome/human_corona/Wuhan_corona.fna -a 4 -W 10 > /BANK/genome/human_corona/RockPigeon-FULL_FULL_W10.mega &
+
+## DB: S_scrofa-FULL
+### Q: FULL
+megablast -d /BANK/genome/DB/S_scrofa -i /BANK/genome/human_corona/Wuhan_corona.fna -a 4 -W 10 > /BANK/genome/human_corona/S_scrofa-FULL_FULL_W10.mega &
+
+## DB: Turkey-FULL
+### Q: window:25 OW:5
+megablast -d /BANK/genome/DB/Turkey -i /BANK/genome/human_corona/Wuhan_corona.fna.W25.5.query -a 4 -W 10 > /BANK/genome/human_corona/Turkey-FULL_25.5_W10.mega &
+### Q: FULL
+megablast -d /BANK/genome/DB/Turkey -i /BANK/genome/human_corona/Wuhan_corona.fna -a 4 -W 10 > /BANK/genome/human_corona/Turkey-FULL_FULL_W10.mega &
+
+## DB: random-FULL
+### Q: FULL
+megablast -d /BANK/genome/DB/randomSet_100-300.01 -i /BANK/genome/human_corona/Wuhan_corona.fna -W 10 -a 4 > /BANK/genome/human_corona/randomSet_100-300.01-FULL_FULL_W10.mega &
+
+# 解析方針
+# Virus vs. corona blast 結果より、ヒットしたゲノムを持つウイルスの宿主ゲノムを選択
+- 生物種：
+-- Vertebrate : Bat*, Human*, Rat, Mouse*, Rabbit*, ネコ*, Beluga*, Turkey*, Swine(Porcine)*, Sparrow, Pigeon*, Magpie-robin, Munia, Mink, Ferret*, Camel*, Goose, Wigeon, Ovine, Canine*, 
+-- Other animal: Epiphyas, Apis mellifera, Amsacta moorei,
+# 当該ゲノムのblast DB作成
+# corona と当該ゲノムをmegablast
