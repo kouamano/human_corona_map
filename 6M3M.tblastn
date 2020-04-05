@@ -1,0 +1,76 @@
+TBLASTN 2.2.29+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+
+Database: Wuhan_corona.fna
+           1 sequences; 29,903 total letters
+
+
+
+Query= 6M3M:A|PDBID|CHAIN|SEQUENCE
+
+Length=136
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+  MN908947.3 Severe acute respiratory syndrome coronavirus 2 isol...    283   7e-91
+
+
+> MN908947.3 Severe acute respiratory syndrome coronavirus 2 isolate 
+Wuhan-Hu-1, complete genome
+Length=29903
+
+ Score =   283 bits (724),  Expect = 7e-91, Method: Compositional matrix adjust.
+ Identities = 134/134 (100%), Positives = 134/134 (100%), Gaps = 0/134 (0%)
+ Frame = +2
+
+Query  3      RPQGLPNNTASWFTALTQHGKEDLKFPRGQGVPINTNSSPDDQIGYYRRATRRIRGGDGK  62
+              RPQGLPNNTASWFTALTQHGKEDLKFPRGQGVPINTNSSPDDQIGYYRRATRRIRGGDGK
+Sbjct  28394  RPQGLPNNTASWFTALTQHGKEDLKFPRGQGVPINTNSSPDDQIGYYRRATRRIRGGDGK  28573
+
+Query  63     MKDLSPRWYFYYLGTGPEAGLPYGANKDGIIWVATEGALNTPKDHIGTRNPANNAAIVLQ  122
+              MKDLSPRWYFYYLGTGPEAGLPYGANKDGIIWVATEGALNTPKDHIGTRNPANNAAIVLQ
+Sbjct  28574  MKDLSPRWYFYYLGTGPEAGLPYGANKDGIIWVATEGALNTPKDHIGTRNPANNAAIVLQ  28753
+
+Query  123    LPQGTTLPKGFYAE  136
+              LPQGTTLPKGFYAE
+Sbjct  28754  LPQGTTLPKGFYAE  28795
+
+
+ Score = 19.2 bits (38),  Expect = 1.6, Method: Compositional matrix adjust.
+ Identities = 8/18 (44%), Positives = 12/18 (67%), Gaps = 0/18 (0%)
+ Frame = +3
+
+Query  102    NTPKDHIGTRNPANNAAI  119
+              N PK+ +GTRN ++   I
+Sbjct  29112  NKPKEILGTRN*SDKELI  29165
+
+
+
+Lambda      K        H        a         alpha
+   0.315    0.137    0.434    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 912916
+
+
+  Database: Wuhan_corona.fna
+    Posted date:  Mar 29, 2020  12:33 PM
+  Number of letters in database: 29,903
+  Number of sequences in database:  1
+
+
+
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Neighboring words threshold: 13
+Window for multiple hits: 40
