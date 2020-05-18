@@ -13,13 +13,13 @@
 \def\noindentitem{-7mm}
 \def\myindent{\hspace{1zw}}
 \setlength{\columnsep}{20pt}
-%\setlength{\topmargin}{-5mm}
+\setlength{\topmargin}{5mm}
 \setlength{\textwidth}{\texthaba}
 \setlength{\textheight}{237.6mm} %238mm-240mm(著者による編集可)
 \setlength{\evensidemargin}{0pt}
 \setlength{\oddsidemargin}{0pt}
-\setlength{\voffset}{-17.5mm}
-\setlength{\topmargin}{-0mm}
+\setlength{\voffset}{0pt}
+\setlength{\topmargin}{0pt}
 \setlength{\topsep}{\baselineskip}
 \usepackage[dvips]{graphicx,epsfig,color}
 \usepackage{ascmac}
@@ -41,17 +41,16 @@
 \def\stc{{$^{\star \star \star}$}}
 \def\std{{$^{\star \star \star \star}$}}
 \def\ste{{$^{\star \star \star \star \star}$}}
-\def\articletitle{武漢コロナウイルスのホモログマップ作成法の紹介}
+\def\articletitle{『情報メディア研究』における論文等の執筆マニュアル}
 \def\articlesubtitle{-- 第3.1 \LaTeX 版 2008年12月8日改訂 --}
-%\def\marktitle{論文等の執筆マニュアル}
-\def\marktitle{}
-\def\earticletitle{Wuhan corona virus homologue mapping}
+\def\marktitle{論文等の執筆マニュアル}
+\def\earticletitle{Manual of writing a manuscript for articles in Joho Media Kenkyu}
 \def\earticlesubtitle{-- ver. 3.1 for \LaTeX --}
-\def\authors{天野晃\sta}
-\def\eauthors{Kou AMANO\sta}
-\def\affliations{\sta 無所属}
-\def\eaffliations{\sta independent}
-\def\emails{\sta amano.au1@gmail.com}
+\def\authors{天野晃\sta , 林洋平\stb}
+\def\eauthors{Kou AMANO\sta , Youhei HAYASHI\stb}
+\def\affliations{\sta 農業生物資源研究所 , \sta{$^,$}\stb 筑波大学}
+\def\eaffliations{\sta National Institute of Agrobiological Sciences , \sta{$^,$}\stb University of Tsukuba}
+\def\emails{\sta kamano@affrc.go.jp , \stb haya@slis.tsukuba.ac.jp}
 %% ここまで *)
 \pagestyle{fancy}
 %\fancyhead[CO]{\journaltitle}
@@ -70,13 +69,12 @@
 
 \begin{document}
 \twocolumn[ %%著者名/抄録部
-\begin{flushleft}【予稿集】\end{flushleft}
+\begin{flushleft}【原著論文】\end{flushleft}
 %% (* making title %原則として著者が記入する必要はありません
 %% ブラインドの例
 \ifthenelse{\blind=0}{
         \begin{center}
-        \large\articletitle \\ 
-	%\normalsize\articlesubtitle \vspace{1mm}
+        \large\articletitle \\ \normalsize\articlesubtitle \vspace{1mm}
 
         \basesize\authors
 
@@ -86,8 +84,7 @@
         \end{center}
 }{
         \begin{center}
-        \large\articletitle \\ 
-	%\normalsize\articlesubtitle \vspace{1mm}
+        \large\articletitle \\ \normalsize\articlesubtitle \vspace{1mm}
         \vspace{15mm} %%適当に
 
         %\basesize\authors 
@@ -113,8 +110,7 @@
 %% ブラインドの例
 \ifthenelse{\blind=0}{
         \begin{center}
-        \large\earticletitle \\ 
-	%\normalsize\earticlesubtitle \vspace{2mm}
+        \large\earticletitle \\ \normalsize\earticlesubtitle \vspace{2mm}
 
         \basesize\eauthors
 
@@ -124,8 +120,7 @@
         \end{center}
 }{
         \begin{center}
-        \large\earticletitle \\ 
-	%\normalsize\earticlesubtitle \vspace{2mm}
+        \large\earticletitle \\ \normalsize\earticlesubtitle \vspace{2mm}
         \vspace{15mm} %%適当に
 
         %\basesize\eauthors 
