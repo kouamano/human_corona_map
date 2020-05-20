@@ -179,40 +179,36 @@ DB作成は、makeblastdbコマンドにより、デフォルトで行った。
 武漢コロナウイルス完全ゲノム、MN908947.3。
 
 \subsection{ウイルス側}
+\paragraph*{[DB側ゲノム]}
+\paragraph*{[クエリー側ゲノム]}
 
 \subsection{自身のゲノム}
+\subsubsection{相同性マップ}
+\paragraph*{[DB側ゲノム]}
+\paragraph*{[クエリー側ゲノム]}
+\subsubsection{Window-fourierマップ}
 
 \section{マッピング結果の可視化}
 
 \section*{附録：テクニカルターム解説}
 \begin{itemize}
 \item PCR : Polymerase Chain Reactionの略。DNAポリメラーセ（合成酵素）を利用してDNAを複製する系。DNA鋳型、プライマー、合成酵素、DNAの構成要素である、アデニン、グアニン、シトシン、チミン等をバッファに投入し、温度サイクルを作成することによりDNA複製が可能となる。
+産物を検出する際は電気泳動を行う。またはリアルタイム定量的（逆転写）PCRを用い同時に検出するのが一般的である。
+\item 電気泳動 : DNAやタンパクなど、電荷を持つ分子の分離を行う系。
+\item リアルタイム定量的（逆転写）PCR : DNAの定量を目的とするPCR。蛍光マーカー等を用い、これを測定することにより産物の量を計測（推測）する。増幅中にリアルタイムに計量を行う。
+RNA量を計測する際には逆転写を行うので、このように呼ばれる。
 \item プライマー : PCRの際、鋳型DNAに結合し合成開始のプライマーとなる短いDNA断片。
+\item 相同性：特に遺伝子およびアミノ酸の相同性を指す。基本は文字列の相同性を基にしているが、置換を受けやすい／受けにくいペアが判明しており、マッチングには遺伝学の知識が反映されている。
+\item blast : "Basic Local Alignment Search Tools"の略。DNA（RNA）およびアミノ酸配列の相同部分を検索するシステム。
 \end{itemize}
 
 
 \begin{thebibliography}{20}
 \bibitem{W01}$<$https://ftp.ncbi.nlm.nih.gov/$>$, (参照:2020-03)
-
 \bibitem{J01}情報メディア学会編集委員会. 情報メディア学会誌論文等執筆要綱, 2003
-
 \bibitem{S01}杉本重雄. メタデータについて:Dublin Coreを中心として. 情報の科学と技術. Vol. 49, No. 1, 1999, p.3-10. 
 \bibitem{F01}Fidel, R. 
 Qualitative Methods in Information Retrieval Research. Library \& Information Science Research. Vo.15, No.3, 1993, p.219-247.
-
-\bibitem{M01}三輪眞木子. 情報検索スキル:未知の問題を同解くか. 中公新書 1714. 東京, 中央公論社, 2003. 214p.
-\bibitem{B01}Bandula, A. Social Foundations of 
-Thoughts and Action. Englewood Cliffs, NJ: 
-Prentice-Hall, 1986, 544p. 
-
-\bibitem{I01}岩田茂子．“動機づけと学習者の主体性 ”．
-教育心理学：個に帰する教育のために．斉藤
-浩一郎，並木博編．東京，慶應義塾出版会， 
-1986. p.28-42.
-\bibitem{L01}Lasswell, H. D. “The structure and 
-Function of Communication in Society”. 
-Mass Communications. Wilbur, Schramm, 
-ed. 1980. p. 125-133. 
 
 %% ブラインドの例
 \ifthenelse{\blind=0}{
@@ -221,7 +217,6 @@ ed. 1980. p. 125-133.
 \bibitem{Amano01}  dummy1.
 }
 
-\bibitem{SIST02}科学技術情報流通技術基準SIST02書誌的情報の記述 $<$http://www.jst.go.jp/{\linebreak}SIST/handbook/sist02/sist02\_m.htm$>$, (参照2003-12-04)
 \end{thebibliography}
 %% *)
 
