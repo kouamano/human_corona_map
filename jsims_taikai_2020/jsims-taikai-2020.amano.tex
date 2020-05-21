@@ -194,8 +194,9 @@ NCBIのサイトには、ウイルスおよびファージのゲノム配列がまとめられたセクションがあ
 \paragraph*{[クエリー側ゲノム]}
 DB作成時と同じ配列情報をクエリーとして、megablastにて10塩基以上のマッチを行った。その他はデフォルト。
 \paragraph*{[Window-fourier]}
+DNA配列に対してフーリエ変換を行うことにより、コーディング領域ではコドンの特徴が強調され、長さ3のピークが検出されることや、その他の特徴を強調できることが知られており\cite{A01,A02,A03}、
+ORFが実際のコーディング領域であるかの傍証等となり得る。
 次のような条件にて、フーリエ変換を行った。
-コーディング領域ではコドンの特徴が強調され、長さ3のピークが検出されることが知られており、ORFが実際のコーディング領域であるかの傍証となり得る。
 \begin{enumerate}
 \item 塩基情報を次のように数値列に変換する：A $->$ 1、G $->$ I、C $->$ -I、T $->$ -1
 \item 1000ベースごとに配列を分割する
@@ -232,15 +233,20 @@ RNA量を計測する際には逆転写を行うので、このように呼ばれる。
 
 \begin{thebibliography}{20}
 \bibitem{W01}$<$https://ftp.ncbi.nlm.nih.gov/$>$, (参照:2020-03)
+\bibitem{A01}Sergey V. Petoukhov. The genetic code, 8-dimensional hypercomplex numbers and dyadic shifts. http://symmetry.hu/isabm/petoukhov.html. 
+\bibitem{A02}GUY DODIN, PIERRE VANDERGHEYNST, PATRICK LEVOIR, CHRISTINE CORDIER, LAURENCE MARCOURT. Fourier and Wavelet Transform Analysis, a Tool for Visualizing Regular Patterns in DNA Sequences. J. theor. Biol. No. 206, 2000, p.323-326.
+\bibitem{A03}V. R. Chechetkina, V.V. Lobzinc aEngelhardt. Large-scale chromosome folding versus genomic DNA sequences: A discrete double Fourier transform technique. DOI:10.1016/j.jtbi.2017.05.0.
 %\bibitem{J01}情報メディア学会編集委員会. 情報メディア学会誌論文等執筆要綱, 2003
 %\bibitem{S01}杉本重雄. メタデータについて:Dublin Coreを中心として. 情報の科学と技術. Vol. 49, No. 1, 1999, p.3-10. 
 
 %% ブラインドの例
+\if 0
 \ifthenelse{\blind=1}{
 \bibitem{Amano01}  天野晃. 自己組織化による{DNA}シークエンスの分類. {情報メディア学会第5回研究会発表資料}. 2003, p. 5-8.
 }{
 \bibitem{Amano01}  dummy1.
 }
+\fi
 
 \end{thebibliography}
 %% *)
