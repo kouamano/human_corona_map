@@ -157,8 +157,8 @@ The paper describes style and layout of manuscripts in the Journal of Informatio
 %% (* ここから著者が本文(引用も)を記入して下さい
 \section{はじめに}
 ウイルス等の感染検査の一つに、PCR検査がある。この検査は、文字通り検出対象となるDNA(RNA)断片が存在するかを、PCR増幅により直接的に検出・確認する方法である。
-PCRの際には、ターゲットとなるゲノム断片の一部と相同性を持つ、さらに短いDNA(RNA)断片をプライマーとすることによりターゲットを特異的に増幅させるが、当然、ターゲット以外にもプライマーと相同な配列を持つゲノム（断片）は存在し、これらがコンタミネーションを起こしている場合は、False-Positiveを導く。
-そのような場合も配列解析を行うことによりより正確な検出が可能となるが、コストは大きくなる。
+PCRの際には、ターゲットとなるゲノム断片の一部と相同性を持つ、さらに短いDNA(RNA)断片をプライマーとすることによりターゲットを特異的に増幅させるが、当然、ターゲット以外にもプライマーと相同な配列を持つゲノム（断片）は存在する可能性があり、これらがコンタミネーションを起こしている場合は、False-Positiveを導く。
+そのような場合も配列解析を行うことにより、正確な検出が可能となるが、コストは大きくなる。
 
 \section{目的}
 PCRプライマーの設計において、ロバストネスの判断の参考となり得る、簡易かつ低コストなホモログマップの作成方法を紹介する。
@@ -212,8 +212,9 @@ ORFが実際のコーディング領域であるかの傍証等となり得る。
 
 \section*{附録：テクニカルターム解説}
 \begin{itemize}
-\item PCR : Polymerase Chain Reactionの略。DNAポリメラーセ（合成酵素）を利用してDNAを複製する系。DNA鋳型、プライマー、合成酵素、DNAの構成要素であるでオキシヌクレオチド（塩基が、アデニン、グアニン、シトシン、チミンの4種）等をバッファに投入し、温度サイクルを作成することによりDNA複製が可能となる。
-産物を検出する際は電気泳動を行う。またはリアルタイム定量的（逆転写）PCRを用い、増幅と同時に検出するのが一般的である。
+\item PCR : Polymerase Chain Reactionの略。DNAポリメラーセ（合成酵素）を利用してDNAを複製する系。
+DNA鋳型、プライマー、合成酵素、DNAの構成要素であるデオキシヌクレオチド（塩基が、アデニン、グアニン、シトシン、チミンの4種）等をバッファに投入し、温度サイクルを作成することによりDNA複製が可能となる。
+産物を検出する際は電気泳動を行う。またはリアルタイム定量的（逆転写）PCRを用い、増幅と同時に検出するのが一般的である。\cite{M04}
 \item 電気泳動 : DNAやタンパクなど、電荷を持つ分子の分離を行う系。蛍光マーキング等により視覚的に産物の確認を行う。
 \item リアルタイム定量的（逆転写）PCR : DNAの定量を目的とするPCR。蛍光マーカー等を用い、これを測定することにより産物の量を計測（推測）する。増幅中にリアルタイムに計量を行う。
 RNA量を計測する際には逆転写を行うので、このように呼ばれる。
@@ -236,6 +237,7 @@ RNA量を計測する際には逆転写を行うので、このように呼ばれる。
 \bibitem{A01}Sergey V. Petoukhov. The genetic code, 8-dimensional hypercomplex numbers and dyadic shifts. http://symmetry.hu/isabm/petoukhov.html. 
 \bibitem{A02}GUY DODIN, PIERRE VANDERGHEYNST, PATRICK LEVOIR, CHRISTINE CORDIER, LAURENCE MARCOURT. Fourier and Wavelet Transform Analysis, a Tool for Visualizing Regular Patterns in DNA Sequences. J. theor. Biol. No. 206, 2000, p.323-326.
 \bibitem{A03}V. R. Chechetkina, V.V. Lobzinc aEngelhardt. Large-scale chromosome folding versus genomic DNA sequences: A discrete double Fourier transform technique. DOI:10.1016/j.jtbi.2017.05.0.
+\bibitem{M04}https://www.niid.go.jp/niid/images/lab-manual/2019-nCoV20200217.pdf (参照:2020-03)
 %\bibitem{J01}情報メディア学会編集委員会. 情報メディア学会誌論文等執筆要綱, 2003
 %\bibitem{S01}杉本重雄. メタデータについて:Dublin Coreを中心として. 情報の科学と技術. Vol. 49, No. 1, 1999, p.3-10. 
 
