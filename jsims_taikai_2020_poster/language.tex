@@ -1,0 +1,37 @@
+\noindent
+\fcolorbox{orange}{white}{
+\begin{minipage}[t]{242mm}
+\vspace{5mm}\section*{\fontsize{48}{20}\selectfont The language} \vspace{-5mm}
+\subsection*{\fontsize{40}{20}\selectfont Short example} \vspace{0mm}
+\linespread{1.9}\fontsize{36}{20}\sffamily\selectfont
+%Short example:\\
+%\\
+\color{red}\#1\color{blue}\$Op\$\color{green}Name\color{black}(\color{magenta}\$\#1\color{cyan}[1]\color{black}) \\
+$\downarrow$ tq in=/dev/stdin -FT -Pin data=test.csv\\
+\color{red}\#1\color{blue}\$Op\$\color{green}Name\color{black}(\color{magenta}\$\#1\color{cyan}[1]\color{black}@@\color{brown}\#1\$Op\$Name\color{black}(\color{purple}Length\color{black})) \\
+%\#1\$Op\$Name(\$\#1[1]@@\#1\$Op\$Name(Length))
+\vspace{4mm}
+
+\color{red}\#1 : $<label>$ \vspace{2mm}\\
+\color{blue}\$Op\$ : $<operator>$ \vspace{2mm}\\
+\color{green}Name : $<name>$ \vspace{2mm}\\
+\color{magenta}\$\#1 : $<reference>$ \vspace{2mm}\\
+\color{cyan}[1] : $<data \ bind \ dimension>$ \vspace{2mm}\\
+\color{black}@@ : $<bind \ mark>$ \vspace{2mm}\\
+\color{brown}\#1\$Op\$Name : $<binded \ object>$ \vspace{2mm}\\
+\color{purple}Length : $<binded \ data>$\\
+\\
+\vspace{-30mm}
+\color{black}\subsection*{\fontsize{40}{20}\selectfont Data structure} \vspace{0mm}
+\ 
+\\
+\linespread{1.2}\fontsize{16}{20}\sffamily\selectfont
+\begin{tabular}{llllllllllllllll}
+\multicolumn{14}{c}{\fontsize{28}{20}\sffamily\selectfont Table: Members of the data structure}\\
+&Lv&Adr&PAd&Ref&LT&LN&Hpt&H&D&VC&VSt&Cj&NC\\
+\hline
+0&0&14153344&0&0&h&1&2&\#1\$Op\$Name&&0&&0&1\\
+1&1&14154608&14153344&14153344&&-1&0&\$\#1[1]&[1&1&Length&0&0\\
+\end{tabular}
+\vspace{5mm}
+\end{minipage} }

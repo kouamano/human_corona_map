@@ -1,0 +1,53 @@
+\fcolorbox{orange}{white}{
+\begin{minipage}[t]{242mm}
+\def\arraystretch{0.7}
+\vspace{5mm}\section*{\fontsize{48}{20}\selectfont Development status} \vspace{-5mm}
+\subsection*{\fontsize{40}{20}\selectfont Program construction} \vspace{0mm}
+\linespread{1.9}\fontsize{36}{20}\sffamily\selectfont
+\begin{itemize}
+\item tq parser (designated as "tq") ... Done
+\item converter ... Developing
+\item analyzer ... TBD
+\end{itemize}
+
+\color[cmyk]{1,1,0,0.8}
+\subsection*{\fontsize{40}{20}\selectfont Supported forms} \vspace{3mm}
+\linespread{1.9}\fontsize{36}{20}\sffamily\selectfont
+\color[cmyk]{0,0,0,1}
+
+\epsfig{file=convg.eps,height=160mm}
+
+
+\subsection*{\fontsize{40}{20}\selectfont Performance} \vspace{0mm}
+\linespread{2.1}\fontsize{28}{20}\sffamily\selectfont
+\color[cmyk]{0,0,0,1}
+\begin{center}
+\begin{tabular}{lrrr}
+\multicolumn{4}{c}{Table: Parsing performance @ E5-2650} \\
+Program & Size (nodes) & Time (min:sec) & Memory (bytes) \\
+\hline
+\hline
+tq (stable) & 124,653,854 & 45 & 26G \\
+tq (exptl.) & 124,653,854 & 27 & 12G \\
+jq & 124,653,854 & 2:25 & 36G \\
+\hline
+tq (stable) & 498,615,417 & 3:30 & 104G \\
+tq (exptl.) & 498,615,417 & 1:55 & 51G \\
+jq & 498,615,417 & 10:50 & 144G \\
+\end{tabular}
+\end{center}
+
+\linespread{2.1}\fontsize{28}{20}\sffamily\selectfont
+\color[cmyk]{0,0,0,1}
+\begin{center}
+\begin{tabular}{lrrr}
+\multicolumn{4}{c}{Table: Parsing and converting performance} \\
+Form & Size (nodes) & Time (min:sec) & Memory (bytes) \\
+\hline
+\hline
+JSON & 124,653,854 & 1:21 & 29G \\
+JSON & 498,615,417 & 5:35 & 136G \\
+\end{tabular}
+\end{center}
+\vspace{1mm}
+\end{minipage} }

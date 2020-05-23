@@ -1,0 +1,130 @@
+\documentclass[portrait,a0,oldgerm]{a0poster}
+\usepackage{ascmac}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{bnf}
+\usepackage[dvips]{graphicx,epsfig}
+\usepackage{xcolor,lipsum}
+\usepackage{multicol}
+\usepackage{multirow}
+%\usepackage{ulem}
+%\usepackage{udline_euc}
+\usepackage{wallpaper}
+\setlength{\columnsep}{50pt}
+\setlength{\fboxrule}{3pt}
+\pagestyle{empty}
+\def\thesection{\fontsize{46}{20}\selectfont \Roman{section}.}
+\def\thesubsection{\fontsize{46}{20}\selectfont \roman{subsection}.}
+\def\thesubsubsection{\fontsize{46}{20}\selectfont \roman{subsection}.\roman{subsubsection}.}
+\def\baselinestretch{1.07}
+\def\formularsize{\fontsize{60}{20}\selectfont}
+\def\normalfontsize{\fontsize{36}{20}\selectfont}
+\def\spaceV{\ \ \ \ \ }
+\def\spaceX{\ \ \ \ \ \ \ \ \ \ }
+\def\spaceXV{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\def\spaceXX{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\def\areaspace{9.4mm}
+\input{colordef.01.tex}
+\unitlength=1mm
+
+
+
+\begin{document}
+%%----- (* Wall Paper -----%%
+%\TileWallPaper{11.7cm}{2cm}{Doshisha-n5.eps}
+%%----- Wall Paper *) -----%%
+%%----- (* space -----%%
+\begin{center}
+%\epsfig{file=WhiteSpace.ps,height=25mm}
+\vspace{25mm}
+\end{center}
+%%----- space *) -----%%
+
+
+%%----- (* Title -----%%
+\begin{center}
+\color[cmyk]{0,1,1,0.9}
+\linespread{5.0}\fontsize{90}{20}\selectfont
+tq :\\A Comprehensive Disciplinary Language for Materials Science
+\end{center}
+%%----- Title *) -----%%
+%%----- (* Sub Title -----%%
+%\begin{center}
+%\color[cmyk]{1,1,0,0}
+%\linespread{0.9}\fontsize{47}{20}\selectfont
+%\end{center}
+%%----- Sub Title *) -----%%
+\vspace{20mm}
+%%----- (* Author(s) and Affiliation(s) -----%%
+\color[cmyk]{0,1,1,0.85}
+\linespread{1.4}\fontsize{50}{20}\selectfont
+\begin{center} \begin{tabular}[t]{ccc}
+Kou Amano$^{\dag}$ &&Koichi Sakamoto$^{\dag}$ \\
+\end{tabular} \end{center}
+\color[cmyk]{0,1,1,0.82}
+\linespread{1.4}\fontsize{48}{20}\selectfont
+\begin{center} \begin{tabular}{c} 
+$^\dag$Natinal Institute for Materials Science \\
+\end{tabular} \end{center}
+%%----- Author(s) and Affiliation(s) *) -----%%
+
+\vspace{25mm}
+\vspace{25mm}
+
+%%----- (* Body, Single Column Region -----%%
+%% Nothing
+%%----- Body, Single Column Region *) -----%%
+%%----- (* Body, Multi Column Region -----%%
+%% color %%
+%\definecolor{afb}{rgb}{0.8,0.85,0.9}
+\color[cmyk]{1,1,0,0.8}
+\begin{multicols}{3}
+%%=====(* Col 1 =====%%
+\noindent \input{intro.tex}
+
+\vspace{\areaspace} \noindent \input{objective.tex}
+
+\vspace{\areaspace} \noindent \input{language.tex}
+%%===== Col 1 *)=====%%
+
+%%=====(* Col 2 =====%%
+\noindent \input{operation.tex}
+%%===== Col 2 *)=====%%
+
+%%=====(* Col 3 =====%%
+\noindent \input{status.tex}
+
+\vspace{\areaspace} \noindent \input{future.tex}
+
+\vspace{\areaspace} \noindent \input{conclusion.tex}
+%%===== Col 3 *)=====%%
+
+\end{multicols}
+%%----- Body, Multi Column Region *) -----%%
+
+\vspace{17mm}
+
+%%----- (*  Logo -----%%
+\begin{center}
+%%\begin{tabular}{ccccccc}
+%\begin{tabular}{ccccc}
+%\epsfig{file=Tsukuba-Univ-mark200.eps,height=50mm} &
+%\spaceV &
+%%\epsfig{file=nias_logo.ps,height=50mm} &
+%\spaceV &
+%\epsfig{file=riken_g.eps,height=50mm} \\
+%\end{tabular}
+%\epsfig{file=KAKEN_logo.eps,height=35mm}
+\end{center}
+%%-----  Logo *) -----%%
+
+
+
+%%----- (* For print all image -----%%
+\begin{center}
+%\epsfig{file=WhiteSpace.ps,height=25mm}
+\vspace{25mm}
+\end{center}
+%%----- For print all image *) -----%%
+
+\end{document}
