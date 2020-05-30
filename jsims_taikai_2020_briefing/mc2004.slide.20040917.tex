@@ -1,0 +1,1505 @@
+\documentclass[a4]{slides}
+\usepackage{lscape}
+\usepackage[dvips]{graphicx,epsfig,color}
+\usepackage{colortbl}
+\textheight=249mm
+\textwidth=198mm
+\topmargin=-10mm
+\headheight=5mm
+\oddsidemargin=-2mm
+\evensidemargin=-2mm
+\def\spaceV{\ \ \ \ \ }
+\def\spaceX{\ \ \ \ \ \ \ \ \ \ }
+\def\spaceXV{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\def\spaceXX{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\begin{document}
+%\pagecolor[cmyk]{1,0,0,0}
+%%-----start   01-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{1,1,0,0}
+\fontsize{46}{20}\selectfont
+Maple Conference 2004
+
+\vspace{30mm}
+\fontsize{38}{20}\selectfont
+数式処理概観  \\ \fontsize{28}{20}\selectfont\vspace{5mm} -遺伝子解析に望まれる数式処理とは-
+\end{center}
+
+\begin{center}
+\color[cmyk]{1,1,0,0}
+\fontsize{36}{20}\selectfont
+\vspace{30mm}
+農業生物資源研究所 \\ 天野 晃
+\end{center}
+\end{landscape}
+\end{slide}
+%%-----end     01-----%%
+
+%%-----start   02-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{1,1,0,0}
+\fontsize{46}{20}\selectfont
+構成
+\end{center}
+\vspace{15mm}
+\begin{itemize}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+\item DNAシークエンス研究紹介
+\item Oligonucleotide Frequency \\ \& Self-Organizing Clustering
+\item Maple / Mahtematica 比較
+\item HPCの利用へむけて
+\end{itemize}
+\end{landscape}
+\end{slide}
+%%-----end     02-----%%
+
+%%-----start   03-----%%
+%<chapter01>
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{0.3,0.3,0,0}
+\fontsize{46}{20}\selectfont
+DNAシークエンス研究
+
+\color[cmyk]{1,1,0,0}
+\fontsize{46}{20}\selectfont
+\vspace{-78pt}
+\hspace{-26pt}
+DNAシークエンス研究
+\end{center}
+\end{landscape}
+\end{slide}
+%%-----end     03-----%%
+
+%%-----start   04-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+\vspace{-75pt}
+DNAとは
+\end{center}
+\vspace{7mm}
+
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+形質を遺伝させる因子の本体であり、
+\vspace{-7mm}
+\begin{itemize}
+\item DNAレベルでの相違は個人間で0.3-0.5\%程度で人種間での相違も同程度。
+\vspace{-12mm} \item ヒトにもっとも近いとされるチンパンジーとの相違は1\%強であるといわれている。
+\end{itemize}
+
+\begin{center}
+\epsfig{file=bc42.ps,height=62mm}\hspace{18mm}
+\epsfig{file=George-W-Bush.ps,height=62mm}\hspace{10mm}
+\epsfig{file=cinpanji_001.ps,height=62mm}
+\color[cmyk]{0,0,0,1}
+\fontsize{18}{20}\selectfont
+\put(-392,-20){$|$}
+\put(-392,-25){\line(1,0){135}}
+\put(-260,-20){$|$}
+\put(-202,-20){$|$}
+\put(-202,-25){\line(1,0){145}}
+\put(-60,-20){$|$}
+\put(-362,-45){0.3-0.5\%}
+\put(-152,-45){\hspace{3mm}1\%}
+
+\end{center}
+\end{landscape}
+\end{slide}
+%%-----end     04-----%%
+
+%%-----start   05-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+DNA入門 \\ \fontsize{24}{20}\selectfont-セントラルドグマ-
+\end{center}
+
+\vspace{20mm}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+遺伝情報の流れは一方通行である。 --クリックが提唱
+
+\begin{center}
+\fontsize{35}{20}\selectfont
+\vspace{20mm}
+DNA
+
+\vspace{-7mm} \hspace{2mm} $\Downarrow$ \vspace{-7mm}
+
+RNA
+
+\vspace{-7mm} \hspace{2mm} $\Downarrow$ \vspace{-7mm}
+
+アミノ酸(ペプチド)
+
+\fontsize{25}{20}\selectfont
+\vspace{3mm}
+※でも、ホントは逆もあった。
+\end{center}
+\end{landscape}
+\end{slide}
+%%-----end     05-----%%
+
+%%-----start   06-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+DNA入門 \\ \fontsize{24}{20}\selectfont-構造-
+\end{center}
+
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+\begin{itemize}
+\item 一本の非常に長い分子であり遺伝子の本体。
+\item 基本単位は、糖、リン酸、4種の塩基からなるデオキシリボ核酸。
+\item 塩基対で(互いに逆向きに)水素結合し、二本鎖らせん構造を取る。
+\item 塩基対の結合にはルールがある(相補塩基対)。
+\item 二本鎖らせん構造は、さらに様々なタンパク質と結合し安定化する(染色体)。
+\end{itemize}
+\end{landscape}
+\end{slide}
+%%-----end     06-----%%
+
+%%-----start   07-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+DNA入門 \\ \fontsize{24}{20}\selectfont-機能-
+\end{center}
+
+\vspace{38mm}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+\begin{itemize}
+\item タンパク質をコードする部分(コーディングリージョン)とそれ以外の部分(ノンコーディングリージョン)に分かれる。
+\item コーディングリージョンではコドン(3つの塩基の並び)と言われる単位でひとつのアミノ酸をコードする。
+\item ノンコーディングリージョンには、調節(調整)領域と呼ばれ、発現の調節に関与する領域がある。
+\end{itemize}
+\end{landscape}
+\end{slide}
+%%-----end     07-----%%
+
+%%-----start   08-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+DNA入門 \\ \fontsize{24}{20}\selectfont-DNAの抽象化(データ化)-
+\end{center}
+
+\vspace{38mm}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+\begin{itemize}
+\item DNAは4つの基本単位が直線的に並んだもの(化学的にも)であり、4種の文字を並べることによってデータ化できる(DNAシークエンス)。
+\item 具体的には、A(Adenine)、T(Thymine)、G(Guanine)、C(Cytosine)を用いる。
+\item したがって、DNAシークエンス間の相違は文字の違いとして明確に数値化できる。
+\end{itemize}
+\end{landscape}
+\end{slide}
+%%-----end     08-----%%
+
+%%-----start   09-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\fontsize{38}{20}\selectfont
+\color[cmyk]{1,1,0,0}
+DNA入門 \\ \fontsize{24}{20}\selectfont-DNAデータベース-
+\end{center}
+
+\vspace{28mm}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+われわれは国際的な協力のもとに管理される三大データベースを利用することができる。
+
+\vspace{24mm}
+\begin{center}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+\begin{itemize}
+\item NLMのNCBIが管理するGenBank
+\item 日本の国立遺伝学研究所が管理するDDBJ
+\item EBI-EMBLが提供するシークエンスデータベース
+\end{itemize}
+\end{center}
+\end{landscape}
+\end{slide}
+%%-----end     09-----%%
+
+%%-----start   10-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont DNA解析 \\ \fontsize{24}{20}\selectfont -二つのメインストリーム (1)-
+\end{center}
+
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont 現在のDNAの解析はシークエンスパターンを比較することが基本となる。
+
+\begin{center}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+\begin{itemize}
+\item 相同性検索 \\
+\fontsize{28}{20}\selectfont
+(おもに)二つのシークエンス間において、部分的な(アライメントされた)共通配列を見付ける。
+	\begin{itemize}
+	\item テクニックとしてローカルアライメントを用いる。
+	\end{itemize}
+\fontsize{30}{20}\selectfont
+\item 系統樹作成(クラスタリング) \\
+\fontsize{28}{20}\selectfont
+複数のシークエンスにまたがる共通の全体配列と、個々の配列間の距離を求める。
+	\begin{itemize}
+	\item テクニックとしてグローバルアライメントを用いる。
+	\end{itemize}
+\end{itemize}
+\end{center}
+\end{landscape}
+\end{slide}
+%%-----end     10-----%%
+
+%%-----start   11-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont DNA解析 \\ \fontsize{24}{20}\selectfont -二つのメインストリーム (2)-
+\end{center}
+
+\vspace{36mm}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+\begin{itemize}
+\item 相同性検索のためのツール
+	\fontsize{28}{20}\selectfont
+	\begin{itemize}
+	\item BLAST
+	\item BLAT
+	\end{itemize}
+\fontsize{30}{20}\selectfont
+\item 系統樹作成のためのツール
+	\fontsize{28}{20}\selectfont
+	\begin{itemize}
+	\item ClustalW/X
+	\item Phylip
+	\end{itemize}
+\end{itemize}
+\end{landscape}
+\end{slide}
+%%-----end     11-----%%
+
+%%-----start   12-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont DNA解析 \\ \fontsize{24}{20}\selectfont -二つのメインストリーム (3)-
+
+\epsfig{file=BLAST-EXMPL.ps,height=138mm}
+\fontsize{24}{20}\selectfont \\
+BLASTによるローカルアライメントの例
+\end{center}
+\end{landscape}
+\end{slide}
+%%-----end     12-----%%
+
+%%-----start   13-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont DNA解析 \\ \fontsize{24}{20}\selectfont -二つのメインストリーム (4)-
+
+\epsfig{file=ClustalX-EXAMPLE.ps,height=138mm} \\
+\fontsize{24}{20}\selectfont
+ClustalXによるグローバルアライメントの例
+\end{center}
+\end{landscape}
+\end{slide}
+%%-----end     13-----%%
+
+%%-----start   14-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont DNA解析 \\ \fontsize{24}{20}\selectfont -その他の方法-
+\end{center}
+
+\vspace{15mm}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+\begin{itemize}
+\item DNAシークエンスの特徴を抽出/記述する。
+	\fontsize{28}{20}\selectfont
+	\begin{itemize}
+	\color[cmyk]{0,1,1,0}
+	\item 特定のパターンの出現頻度/位置を用いる。
+	\color[cmyk]{1,1,0,0}
+	\item 統計的インデクスを算出する。
+	\end{itemize}
+\fontsize{30}{20}\selectfont
+\item アライメントを用いずにクラスタリングを行う。
+	\fontsize{28}{20}\selectfont
+	\begin{itemize}
+	\item Self-Organizing Map
+	\color[cmyk]{0,1,1,0}
+	\item Self-Organizing Clustering
+	\color[cmyk]{1,1,0,0}
+	\item Support Vector Machine
+	\end{itemize}
+\end{itemize}
+\end{landscape}
+\end{slide}
+%%-----end     14-----%%
+
+%%-----start   15-----%%
+%<chapter0>
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{0.3,0.3,0,0}
+\fontsize{46}{20}\selectfont
+Oligonucleotide Frequency
+
+\&
+
+Self-Organizing Clustering
+
+\color[cmyk]{1,1,0,0}
+\fontsize{46}{20}\selectfont
+\vspace{-198pt}
+\hspace{-26pt}
+Oligonucleotide Frequency
+
+\&
+
+Self-Organizing Clustering
+\end{center}
+\end{landscape}
+\end{slide}
+%%-----end     15-----%%
+
+%%-----start   16-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-75pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+Oligonucleotide Frequency
+\end{center}
+
+\vspace{15mm}
+\color[cmyk]{1,1,0,0}
+\fontsize{28}{20}\selectfont
+短いシークエンスの断片を、ヌクレオチドをひとつづつずらしながら計上する。
+
+\begin{center}
+\color[cmyk]{1,1,0,0}
+\fontsize{28}{20}\selectfont --例--
+
+\fontsize{28}{20}\selectfont \textgt{TAGTACGC}
+
+\vspace{-5mm}\fontsize{25}{20}\selectfont
+\begin{itemize}
+\item シングルヌクレオチド頻度
+
+T - 2回、A - 2回、G - 2回、C - 2回が出現。
+\vspace{-5mm}
+\item ジヌクレオチド頻度
+
+TA - 2回、AG - 1回、GT - 1回、AC - 1回、CG - 1回、GC - 1回が出現。
+\end{itemize}
+\end{center}
+\end{landscape}
+\end{slide}
+%%-----end     16-----%%
+
+%%-----start   17-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+Self-Organizing Clustering \\ \fontsize{24}{20}\selectfont -概観-
+\end{center}
+
+\vspace{15mm}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+\begin{itemize}
+\item[目的:] 非階層クラスタリング
+\item[方法:] ノードの最適配置を行う
+\item[対象:] ベクトル化されたデータ
+\item[特徴:] \ 
+	\fontsize{28}{20}\selectfont
+	\begin{itemize}
+	\item 階層的に用いることにより階層分類が可能
+	\item 多彩なプラットフォームに対応
+	\end{itemize}
+\end{itemize}
+\end{landscape}
+\end{slide}
+%%-----end     17-----%%
+
+%%-----start   18-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+Self-Organizing Clustering \\ \fontsize{24}{20}\selectfont -アルゴリズム-
+\end{center}
+
+\color[cmyk]{1,1,0,0}
+\fontsize{26}{20}\selectfont
+\begin{enumerate}
+\vspace{-5mm}\item ベクトルデータをサンプルノードとして読み込み、ランダムにクラスタノードを発生させる
+\vspace{-7mm}\item サンプルノードからみて一番近いクラスタノードを参照させる
+\vspace{-7mm}\item 各クラスタノードを参照しているサンプルノードの座標中心を計算する
+\vspace{-7mm}\item 各クラスタノードをさきに計算した座標中心へ近付ける
+\vspace{-7mm}\item 各クラスタノード間の距離を計算し、一番近いクラスタノードのペアを統合するが、この距離がユーザが指定した距離よりも大きいときは統合しない
+\vspace{-7mm}\item 2 -- 5を繰り返す
+\end{enumerate}
+\end{landscape}
+\end{slide}
+%%-----end     18-----%%
+
+%%-----start   19-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+Self-Organizing Clustering \\ \fontsize{24}{20}\selectfont -実装-
+\end{center}
+
+\vspace{7mm}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+\begin{itemize}
+\item CUIプログラム
+\vspace{-5mm}\item OpenMP対応コード
+\vspace{-5mm}\item C、Perl等による約3500行のコード
+\vspace{-5mm}\item 動作確認プラットフォーム
+	\fontsize{28}{20}\selectfont
+	\begin{itemize}
+	\vspace{-4mm}\item SGI IRIX
+	\vspace{-6mm}\item HP-UX
+	\vspace{-6mm}\item SUN OS
+	\vspace{-6mm}\item Linux
+	\vspace{-6mm}\item OS X
+	\vspace{-6mm}\item Windows
+	\end{itemize}
+\end{itemize}
+\end{landscape}
+\end{slide}
+%%-----end     19-----%%
+
+%%-----start   20-----%%
+%<chapter03>
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{0.3,0.3,0,0}
+\fontsize{46}{20}\selectfont
+Maple / Mathematica
+
+比較
+
+\color[cmyk]{1,1,0,0}
+\fontsize{46}{20}\selectfont
+\vspace{-151pt}
+\hspace{-26pt}
+Maple / Mathematica
+
+比較
+
+\end{center}
+\end{landscape}
+\end{slide}
+%%-----end     20-----%%
+
+%%-----start   21-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-75pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+数式処理系の主観的な比較
+\end{center}
+\vspace{60mm}
+\arrayrulecolor[cmyk]{1,1,0,0}
+\begin{center}
+\begin{tabular}{rlll}
+\color[cmyk]{1,1,0,0} \fontsize{28}{20}\selectfont パッケージ & \color[cmyk]{1,1,0,0} \fontsize{28}{20}\selectfont \ \ \ \ Maple & \color[cmyk]{1,1,0,0} \fontsize{28}{20}\selectfont Mathematica & \color[cmyk]{1,1,0,0} \fontsize{28}{20}\selectfont \ \ Maxima \\
+\hline
+\hline
+\color[cmyk]{1,1,0,0} 価格 & \color[cmyk]{1,1,0,0} 適正 & \color[cmyk]{1,1,0,0} 高価 & \color[cmyk]{1,1,0,0} open/free \\
+\color[cmyk]{1,1,0,0} 安定性(バグ) & \color[cmyk]{1,1,0,0} 期待が持てる & \color[cmyk]{1,1,0,0} 低いが期待が持てる & \color[cmyk]{1,1,0,0} 期待できない \\
+\color[cmyk]{1,1,0,0} 先進的な開発 & \color[cmyk]{1,1,0,0} 高い期待が持てる & \color[cmyk]{1,1,0,0} 期待が持てる & \color[cmyk]{1,1,0,0} 期待が持てる \\
+\color[cmyk]{1,1,0,0} HPCへの対応 & \color[cmyk]{1,1,0,0} 高い期待が持てる & \color[cmyk]{1,1,0,0} 高い期待が持てる & \color[cmyk]{1,1,0,0} 期待できない \\
+\color[cmyk]{1,1,0,0} Linuxへの対応 & \color[cmyk]{1,1,0,0} 低いが期待が持てる & \color[cmyk]{1,1,0,0} 期待が持てる & \color[cmyk]{1,1,0,0} 高い期待が持てる \\
+\color[cmyk]{1,1,0,0} *BSDへの対応 & \color[cmyk]{1,1,0,0} 期待できない & \color[cmyk]{1,1,0,0} 期待できない & \color[cmyk]{1,1,0,0} 期待が持てる \\
+\end{tabular}
+\end{center}
+\vspace{30mm}
+\end{landscape}
+\end{slide}
+%%-----end     21-----%%
+
+%%-----start   22-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-75pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+数式処理系の基本関数等対応表
+\end{center}
+
+\vspace{15mm}
+\arrayrulecolor[cmyk]{1,1,0,0}
+\begin{center}
+\begin{tabular}{cccc}
+ \color[cmyk]{1,1,0,0} \fontsize{28}{20}\selectfont 機能 & \color[cmyk]{1,1,0,0} \fontsize{28}{20}\selectfont Maple & \color[cmyk]{1,1,0,0} \fontsize{28}{20}\selectfont Mathematica & \color[cmyk]{1,1,0,0} \fontsize{28}{20}\selectfont Maxima \\
+\hline
+\hline
+\color[cmyk]{1,1,0,0} セット & \color[cmyk]{1,1,0,0} := & \color[cmyk]{1,1,0,0} :=、= & \color[cmyk]{1,1,0,0} :=、: \\
+\color[cmyk]{1,1,0,0} リスト & \color[cmyk]{1,1,0,0} [...] & \color[cmyk]{1,1,0,0} \{...\} & \color[cmyk]{1,1,0,0} [...] \\
+\color[cmyk]{1,1,0,0} 要素区切 & \color[cmyk]{1,1,0,0} , & \color[cmyk]{1,1,0,0} , & \color[cmyk]{1,1,0,0} , \\
+\color[cmyk]{1,1,0,0} 要素抽出 & \color[cmyk]{1,1,0,0} list[...]、list[..][..] & \color[cmyk]{1,1,0,0} list[[...]]、list[[..]][[..]] & \color[cmyk]{1,1,0,0} list[...]、list[..][..] \\
+\color[cmyk]{1,1,0,0} 行列 & \color[cmyk]{1,1,0,0} Matrix([[..],[..]..]) & \color[cmyk]{1,1,0,0} \{\{..\},\{..\}..\} & \color[cmyk]{1,1,0,0} matrix([..],[..]..) \\
+ \color[cmyk]{1,1,0,0} 行列積 & \color[cmyk]{1,1,0,0} . & \color[cmyk]{1,1,0,0} . & \color[cmyk]{1,1,0,0} . \\
+\color[cmyk]{1,1,0,0} 要素積 & \color[cmyk]{1,1,0,0} zip(`$*$`) & \color[cmyk]{1,1,0,0} * & \color[cmyk]{1,1,0,0} * \\
+\color[cmyk]{1,1,0,0} 範囲指定 & \color[cmyk]{1,1,0,0} x=0..10 & \color[cmyk]{1,1,0,0} \{x,0,10\} & \color[cmyk]{1,1,0,0} [x,0,10] \\
+\color[cmyk]{1,1,0,0} ヘルプ & \color[cmyk]{1,1,0,0} ?、??、??? & \color[cmyk]{1,1,0,0} ?、?? & \color[cmyk]{1,1,0,0} describe() \\
+\color[cmyk]{1,1,0,0} 表示切替 & \color[cmyk]{1,1,0,0} prettyprint、ToInert() & \color[cmyk]{1,1,0,0} FullForm[] & \color[cmyk]{1,1,0,0} DISPLAY2D \\
+\color[cmyk]{1,1,0,0}   & \color[cmyk]{1,1,0,0}   & \color[cmyk]{1,1,0,0}   & \color[cmyk]{1,1,0,0}   \\
+\color[cmyk]{1,1,0,0} その他の & \color[cmyk]{1,1,0,0} 連結時のキャスト、 & \color[cmyk]{1,1,0,0} すべてatomのlist表現、 & \color[cmyk]{1,1,0,0} lispとの接続 \\
+\color[cmyk]{1,1,0,0} 特徴 & \color[cmyk]{1,1,0,0} 文字列とlistが同じ & \color[cmyk]{1,1,0,0} 文字列はひとつのatom & \color[cmyk]{1,1,0,0}   \\
+\end{tabular}
+\end{center}
+\vspace{15mm}
+\end{landscape}
+\end{slide}
+%%-----end     22-----%%
+
+%%-----start   23-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-75pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+数式処理系の文法的比較 \fontsize{32}{20}\selectfont (1/2)
+\end{center}
+
+\vspace{32mm}
+\begin{itemize}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+\item maple
+\vspace{-15mm}
+\color[cmyk]{0,0,0,1}
+\fontsize{26}{20}\selectfont
+\begin{verbatim}
+fib := proc(n)
+if n = 1 then 1
+else if n = 2 then 1
+else fib(n-2)+fib(n-1)
+end if; end if;
+end proc;
+\end{verbatim}
+
+\vspace{-12mm}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+\item mathematica
+\vspace{-7mm}
+\color[cmyk]{0,0,0,1}
+\fontsize{26}{20}\selectfont
+\begin{verbatim}
+SetDelayed[ fib[n_],
+  If[ Equal[n, 1], 1,
+    If[ Equal[n, 2], 1,
+      Plus[ fib[ Plus[n, -2] ], fib[ Plus[n, -1] ] ] ]]]
+\end{verbatim}
+\end{itemize}
+\end{landscape}
+\end{slide}
+%%-----end     23-----%%
+
+%%-----start   24-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-75pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+数式処理系の文法的比較 \fontsize{32}{20}\selectfont (2/2)
+\end{center}
+
+\vspace{42mm}
+\begin{itemize}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+\item lisp
+\vspace{-7mm}
+\color[cmyk]{0,0,0,1}
+\fontsize{26}{20}\selectfont
+\begin{verbatim}
+(defun fib (n)
+  (if (= n 1) 1
+    (if (= n 2) 1
+      (+ (fib (- n 2)) (fib (- n 1))) )))
+\end{verbatim}
+
+\vspace{-12mm}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+\item maxima
+\vspace{-7mm}
+\color[cmyk]{0,0,0,1}
+\fontsize{26}{20}\selectfont
+\begin{verbatim}
+fib(n):=
+  if n = 1 then 1
+  else if n = 2 then 1
+  else fib(n-2) + fib(n-1);
+\end{verbatim}
+\end{itemize}
+\end{landscape}
+\end{slide}
+%%-----end     24-----%%
+
+%%-----start   25-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-75pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+Mapleの特徴
+\end{center}
+
+\vspace{6mm}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+\begin{itemize}
+\item Pascal風の言語
+\item 比較適速いloop処理
+\item カーネル数の制限がない
+\item ワークシートごとのカーネル
+\item ワークシートの形式がXML
+\item GUIにjavaを多用
+\end{itemize}
+\end{landscape}
+\end{slide}
+%%-----end     25-----%%
+
+%%-----start   26-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-75pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+Mapleの気になるところ
+\end{center}
+
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+\begin{itemize}
+\item ヘルプが使いにくい
+	\fontsize{28}{20}\selectfont
+	\begin{itemize}
+	\item ヘルプドキュメント(DB)が独自形式。
+	\item ヘルプブラウザ上で評価できない。
+	\item 検索機能が貧弱。
+	\end{itemize}
+\fontsize{30}{20}\selectfont
+\item kernelが落ちることがある
+	\fontsize{28}{20}\selectfont
+	\begin{itemize}
+	\item いつの間にか落ちている。
+	\item メッセージが無いので、理由がよく分からない。
+	\end{itemize}
+\fontsize{30}{20}\selectfont
+\item Linuxに対するサポートが薄い
+\end{itemize}
+\end{landscape}
+\end{slide}
+%%-----end     26-----%%
+
+%%-----start   27-----%%
+%<chapter03>
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{0.3,0.3,0,0}
+\fontsize{46}{20}\selectfont
+HPCの利用へ向けて
+
+\color[cmyk]{1,1,0,0}
+\fontsize{46}{20}\selectfont
+\vspace{-78pt}
+\hspace{-26pt}
+HPCの利用へ向けて
+\end{center}
+\end{landscape}
+\end{slide}
+%%-----end     27-----%%
+
+%%-----start   28-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-75pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+DNA研究における計算機の利用
+\end{center}
+
+\vspace{5mm}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+計算機を使う問題とは?
+
+\vspace{30mm}
+\begin{center}
+\begin{tabular}{ccc}
+\color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont 問題 & \color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont 数式処理$^{\dag}$の有効性 & \color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont 分散処理の有効性 \\
+\color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont & \color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont & \color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont \\
+\color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont 統計解析 & \color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont ある程度は有効 & \color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont 有効 \\
+\color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont クラスタリング & \color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont ある程度は有効 & \color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont 有効 \\
+\color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont シークエンス探索 & \color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont 不要 & \color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont 有効 \\
+\color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont パスウェイ解析 & \color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont 有効 & \color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont 困難 \\
+\color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont 可視化 & \color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont 有効 & \color[cmyk]{1,1,0,0} \fontsize{26}{20}\selectfont 有効だが困難 \\
+\end{tabular}
+\end{center}
+\vspace{15mm}
+
+\fontsize{14}{20}\selectfont
+$\dag$ 高(任意)精度数値計算、シンボリックオペレーション、高度な方程式の求解
+\end{landscape}
+\end{slide}
+%%-----end     28-----%%
+
+%%-----start   29-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+DNA研究にHPCは必要か?
+\end{center}
+
+\vspace{15mm}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+-- 明らかに必要である。
+
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+\begin{itemize}
+\item 生物学者はすでに、実験機材と同じように計算機を使う
+
+\fontsize{28}{20}\selectfont
+大規模な実験系を組み、多量のデータを処理する。
+\fontsize{30}{20}\selectfont
+\item 生物学者の"カン"や経験では解けない問題
+
+\fontsize{28}{20}\selectfont
+複雑な条件の組合せから、候補を検索する。
+\end{itemize}
+\end{landscape}
+\end{slide}
+%%-----end     29-----%%
+
+%%-----start   30-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+DNA研究に数式処理は必要か?
+\end{center}
+
+\vspace{15mm}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+-- HPCの一環として必要な場合が多くある。
+
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+\begin{itemize}
+\item 生物学者はプログラマではない
+
+\fontsize{28}{20}\selectfont
+テキスト処理、シンボリックオペレーション、高精度数値計算を同時に行う
+プログラムをFortranでは書きたくない。
+\fontsize{30}{20}\selectfont
+\item どうしても必要な問題
+
+\fontsize{28}{20}\selectfont
+微分方程式を解く等、数式処理が必要な問題は多い。
+\end{itemize}
+\end{landscape}
+\end{slide}
+%%-----end     30-----%%
+
+%%-----start   31-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-75pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+数式処理系のおいしいところ
+\end{center}
+
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+\begin{itemize}
+\item 開発時間の短縮
+	\fontsize{28}{20}\selectfont
+	\begin{itemize}
+	\item 少ないコード量
+	\item 少ないトレーニング時間
+	\end{itemize}
+\fontsize{30}{20}\selectfont
+\item 実行時間の短縮
+	\fontsize{28}{20}\selectfont
+	\begin{itemize}
+	\item すでに最適化されたいくつもの関数を備える
+	\end{itemize}
+\item 高い接続性
+	\fontsize{28}{20}\selectfont
+	\begin{itemize}
+	\item すでに高度なGUIを備える
+	\item APIの充実
+	\end{itemize}
+\end{itemize}
+\end{landscape}
+\end{slide}
+%%-----end     31-----%%
+
+%%-----start   32-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+Maple 性能向上のヒント \\ \fontsize{24}{20}\selectfont -マルチカーネルサーバ \fontsize{24}{20}\selectfont (1)-
+\end{center}
+
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+Mapleを並列動作させ、性能向上をねらう。
+ワークシートからのカーネル制御は困難なため、スクリプトを作成。
+
+\begin{itemize}
+\item サーバはMapleをサーバモードで起動
+	\fontsize{28}{20}\selectfont
+	\begin{itemize}
+	\item サーバ起動スクリプトの例
+	\end{itemize}
+\fontsize{30}{20}\selectfont
+\item クライアントはソケット通信クライアントまたはMapleワークシート
+	\fontsize{28}{20}\selectfont
+	\begin{itemize}
+	\item クライアントスクリプトの例
+	\item クライアントプログラムからの利用例
+	\item ワークシートからの利用例
+	\end{itemize}
+\end{itemize}
+\end{landscape}
+\end{slide}
+%%-----end     32-----%%
+
+%%-----start   33-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+Maple 性能向上のヒント \\ \fontsize{24}{20}\selectfont -マルチカーネルサーバ \fontsize{24}{20}\selectfont (2)-
+\end{center}
+
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+・サーバ起動スクリプト
+
+\vspace{-7mm}
+\color[cmyk]{0,0,0,1}
+\fontsize{18}{20}\selectfont
+\begin{verbatim}
+#!/usr/bin/perl
+$PORT = $ARGV[0];
+$stat = <<"EOF";
+\end{verbatim}
+\vspace{-10mm}
+\color[cmyk]{0,1,0,0}
+\begin{verbatim}
+server := proc( sid )
+        local s, res;
+        use Sockets in
+        interface(prettyprint=0);
+        s := Read(sid,60);
+        res := parse(s,statement);
+        Write( sid, sprintf( " \
+Client:%s-%d,\\r\\n Server:%s-%d,\\r\\n sid:%d, \\r\\n string:%s,\\r\\n result:%q.\\r\\n", \
+GetPeerHost( sid ), GetPeerPort( sid ), GetHostName(), $PORT, sid, s, res) );
+        end use
+end proc:
+
+Sockets:-Serve( $PORT, server );
+\end{verbatim}
+\vspace{-10mm}
+\color[cmyk]{0,0,0,1}
+\begin{verbatim}
+EOF
+system("echo '$stat' | maple");
+\end{verbatim}
+
+\end{landscape}
+\end{slide}
+%%-----end     33-----%%
+
+%%-----start   34-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+Maple 性能向上のヒント \\ \fontsize{24}{20}\selectfont -マルチカーネルサーバ \fontsize{24}{20}\selectfont (3)-
+\end{center}
+
+\vspace{18mm}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+・クライアントスクリプト (1/2)
+
+\vspace{-7mm}
+\color[cmyk]{0,0,0,1}
+\fontsize{18}{20}\selectfont
+\begin{verbatim}
+#!/usr/bin/perl
+
+use POSIX;
+use Socket;
+use Getopt::Std;
+
+my ($host, $port, $state, $addr, $proto, $ent);
+$argc = $#ARGV;
+$socket = 'SOCKE';
+$in = $socket;
+$n = 0;
+
+\end{verbatim}
+\vspace{-10mm}
+\color[cmyk]{0,1,0,0}
+\begin{verbatim}
+$host = $ARGV[0];
+$port = $ARGV[1];
+$state = $ARGV[2];
+
+\end{verbatim}
+
+\end{landscape}
+\end{slide}
+%%-----end     34-----%%
+
+%%-----start   35-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+Maple 性能向上のヒント \\ \fontsize{24}{20}\selectfont -マルチカーネルサーバ \fontsize{24}{20}\selectfont (4)-
+\end{center}
+
+\vspace{7mm}
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+・クライアントスクリプト (2/2)
+
+\vspace{-7mm}
+\color[cmyk]{0,0,0,1}
+\fontsize{18}{20}\selectfont
+\begin{verbatim}
+@n = gethostbyname($host);
+$addr = $n[4];
+$proto = getprotobyname('tcp');
+
+socket($socket, PF_INET, SOCK_STREAM, $proto);
+$ent = pack('S n a4 x8', AF_INET, $port, $addr);
+\end{verbatim}
+\vspace{-10mm}
+\color[cmyk]{0,1,0,0}
+\begin{verbatim}
+connect($socket, $ent);
+select($socket);
+print $state;
+$| = 1;
+\end{verbatim}
+\vspace{-10mm}
+\color[cmyk]{0,0,0,1}
+\begin{verbatim}
+
+select(STDOUT);
+while($line = <$in>){
+        print "$line";
+}
+
+close($socket);
+\end{verbatim}
+
+\end{landscape}
+\end{slide}
+%%-----end     35-----%%
+
+%%-----start   36-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+Maple 性能向上のヒント \\ \fontsize{24}{20}\selectfont -マルチカーネルサーバ \fontsize{24}{20}\selectfont (5)-
+\end{center}
+
+\vspace{28mm}
+\begin{tabular}{ll}
+\color[cmyk]{1,1,0,0} \fontsize{30}{20}\selectfont ・サーバの起動 & \color[cmyk]{1,1,0,0} \fontsize{30}{20}\selectfont ・クライアントの接続 \\
+\\
+\epsfig{file=server-exe.eps,height=80mm} & \epsfig{file=client-exe-pr.eps,height=80mm} \\
+\end{tabular}
+\vspace{15mm}
+\end{landscape}
+\end{slide}
+%%-----end     36-----%%
+
+%%-----start   37-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+Maple 性能向上のヒント \\ \fontsize{24}{20}\selectfont -マルチカーネルサーバ \fontsize{24}{20}\selectfont (6)-
+\end{center}
+
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+・ワークシートからの接続
+\vspace{-7mm}
+\begin{center}
+\epsfig{file=GR.client.maple.worksheet-pr.eps,height=132mm}
+\end{center}
+\end{landscape}
+\end{slide}
+%%-----end     37-----%%
+
+%%-----start   38-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\vspace{30mm}
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+Maple 性能向上のヒント \\ \fontsize{24}{20}\selectfont -マルチカーネルサーバ \fontsize{24}{20}\selectfont (7)-
+\end{center}
+
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+・並列稼働状態
+\vspace{-7mm}
+\begin{center}
+\epsfig{file=par-demo.eps,height=172mm}
+\end{center}
+\end{landscape}
+\end{slide}
+%%-----end     38-----%%
+
+%%-----start   39-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+Maple 性能向上のヒント \\ \fontsize{24}{20}\selectfont -マルチカーネルサーバ \fontsize{24}{20}\selectfont (8)-
+\end{center}
+
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+・パフォーマンス
+\vspace{-7mm}
+\begin{center}
+\epsfig{file=perf.parallel-maple.eps,height=120mm}
+\end{center}
+\end{landscape}
+\end{slide}
+%%-----end     39-----%%
+
+%%-----start   40-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+
+\begin{picture}(0,0)(0,0)
+\color[cmyk]{0.6,0.6,0,0}
+\thicklines
+\put(0,0){\line(1,0){320}}
+\put(0,0){\line(-1,0){320}}
+\end{picture}
+
+\vspace{-95pt}
+\color[cmyk]{1,1,0,0}
+\fontsize{38}{20}\selectfont
+Maple 性能向上のヒント \\ \fontsize{24}{20}\selectfont -マルチカーネルサーバ \fontsize{24}{20}\selectfont (9)-
+\end{center}
+
+\color[cmyk]{1,1,0,0}
+\fontsize{30}{20}\selectfont
+・考察
+\begin{itemize}
+	\fontsize{28}{20}\selectfont
+	\item パフォーマンスが良くない
+
+	linuxカーネルが原因? migrationを頻繁に行っている。
+
+	$\rightarrow$ プロセスの解析が必要。
+	\item 使い勝手はあまり良くない
+
+	その都度、スクリプトを記述している。
+
+	$\rightarrow$ インターフェイスを構築中。
+\end{itemize}
+\end{landscape}
+\end{slide}
+%%-----end     40-----%%
+
+%%-----start   41-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\fontsize{42}{20}\selectfont
+\color[cmyk]{1,1,0,0}
+ありがとうございました。
+
+\vspace{17mm}
+Thank you.
+
+\end{center}
+\end{landscape}
+\end{slide}
+%%-----end     41-----%%
+\end{document}
