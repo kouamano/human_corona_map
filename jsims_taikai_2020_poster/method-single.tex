@@ -4,18 +4,25 @@
 \vspace{5mm}\section*{\fontsize{48}{20}\selectfont Method} \vspace{-5mm}
 %%%%%%%%%% content %%%%%%%%%%
 \subsection*{\linespread{1.2}\fontsize{42}{20}\selectfont blast}
-\linespread{1.7}\fontsize{36}{20}\sffamily\selectfont \vspace{-5mm}
+\linespread{1.7}\fontsize{32}{20}\sffamily\selectfont \vspace{-5mm}
 DB: \texttt{makeblastdb -in <<input file>> -out <<DB name>> -dbtype nucl -parse\_seqids} \\
 Query: \texttt{megablast -d <<DB name>> -i <<query sequence>> -W 10 > <<output file>>
 }
 \vspace{-5mm}\subsection*{\linespread{1.2}\fontsize{42}{20}\selectfont self-blast}
-\linespread{1.7}\fontsize{36}{20}\sffamily\selectfont \vspace{-5mm}
+\linespread{1.7}\fontsize{32}{20}\sffamily\selectfont \vspace{-5mm}
 Fragmentation: \texttt{fragment bf=<<input file>> S=25 G=25 cs=1 > <<output file>>} \\
 DB: same as above.  \\
 Query: same as above.
 \vspace{-5mm}\subsection*{\linespread{1.2}\fontsize{42}{20}\selectfont window-fourrier}
-\linespread{1.7}\fontsize{36}{20}\sffamily\selectfont
+\linespread{1.7}\fontsize{32}{20}\sffamily\selectfont \vspace{-5mm}
+\begin{enumerate}
+\item Fragmentation: 30 fragments -- 1000 bases
+\item Conversion: \texttt{"A" -> 1, "T" -> -1, "G" -> I, "C" -> -I}
+\item Fourier transform: $Ft$\texttt{(<<each fragment>>)}
+\end{enumerate}
 \vspace{-5mm}\subsection*{\linespread{1.2}\fontsize{42}{20}\selectfont selection of frequent homologues}
-\linespread{1.7}\fontsize{36}{20}\sffamily\selectfont
+\linespread{1.7}\fontsize{32}{20}\sffamily\selectfont
+Vertebrate: \texttt{base-hit count >= 5; seq-lenght >= 5}  \\
+Viruses: \texttt{base-hit count >= 18; seq-lenght >= 5}  \\
 \vspace{5mm}
 \end{minipage} }
