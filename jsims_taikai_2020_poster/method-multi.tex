@@ -3,6 +3,7 @@
 \begin{minipage}[t]{786mm}
 \vspace{5mm}\section*{\fontsize{48}{20}\selectfont Method} \vspace{-5mm}
 %%%%%%%%%% content %%%%%%%%%%
+\color[cmyk]{0,0,0,1}
 \begin{tabular}{lcl}
  \begin{tabular}{l} \linespread{1.2}\fontsize{42}{20}\selectfont \textbf{BLAST}  \\ \linespread{1.2}\fontsize{32}{20}\selectfont \hspace{5mm}DB: \texttt{makeblastdb -in <<input file>> -out <<DB name>> -dbtype nucl -parse\_seqids} \\ \linespread{1.2}\fontsize{32}{20}\selectfont \hspace{5mm}Query: \texttt{megablast -d <<DB name>> -i <<query sequence>> -W 10 > <<output file>>} \end{tabular}& & 
  \begin{tabular}{l} \linespread{1.2}\fontsize{42}{20}\selectfont \textbf{Window-fourrier} \\ \linespread{1.2}\fontsize{32}{20}\selectfont \hspace{5mm}Fragmentation: 30 fragments; 1000 bases / fragment \\  \linespread{1.2}\fontsize{32}{20}\selectfont \hspace{5mm}Conversion: \texttt{"A" -> 1, "T" -> -1, "G" -> I, "C" -> -I} \\ \linespread{1.2}\fontsize{32}{20}\selectfont \hspace{5mm}Fourier transform: $Ft$\texttt{(<<each fragment>>)} \end{tabular}\\
