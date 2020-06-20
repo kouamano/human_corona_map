@@ -1,0 +1,538 @@
+\documentclass[a4]{slides}
+\usepackage{lscape}
+\usepackage[dvips]{graphicx,epsfig,color}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{setspace}
+\textheight=249mm
+\textwidth=198mm
+\topmargin=-10mm
+\headheight=5mm
+\oddsidemargin=-2mm
+\evensidemargin=-2mm
+\def\spaceV{\ \ \ \ \ }
+\def\spaceX{\ \ \ \ \ \ \ \ \ \ }
+\def\spaceXV{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\def\spaceXX{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\def\txbase{\color[cmyk]{1,1,0,0}}
+\begin{document}
+%\pagecolor[cmyk]{1,0,0,0}
+%%-----start   01-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{1,1,0,0}
+\fontsize{48}{20}\selectfont
+情報メディア学会\\20191102
+
+\vspace{20mm}
+\fontsize{36}{20}\selectfont
+材料科学分野のための総合的記述言語 tq
+\end{center}
+
+\begin{center}
+\color[cmyk]{1,1,0,0}
+\fontsize{26}{20}\selectfont
+\vspace{20mm}
+物質・材料研究機構: 天野晃; 坂本浩一; 鈴木晃; 松田朝彦 \\
+筑波大学: 鈴木伸崇 \\
+\end{center}
+\end{landscape}
+\end{slide}
+%%-----end     01-----%%
+
+%%-----start   02-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{1,1,0,0}
+\fontsize{48}{20}\selectfont
+構成
+\end{center}
+\vspace{15mm}
+\begin{itemize}
+\color[cmyk]{1,1,0,0}
+\fontsize{36}{20}\selectfont
+\item 背景
+%\item ゴール
+\item 目的
+\item 言語紹介
+\item 開発状況
+\end{itemize}
+\end{landscape}
+\end{slide}
+%%-----end     02-----%%
+
+%%-----start   03-----%%
+%<chapter01>
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{0.3,0.3,0,0}
+\fontsize{30}{20}\selectfont
+背景:
+
+\color[cmyk]{1,1,0,0}
+\fontsize{20}{20}\selectfont
+材料科学基盤はマルチスケール・マルチフィジクス \\
+\
+
+\begin{tabular}{rlll}
+\color[cmyk]{1,1,0,0} \fontsize{20}{20}\selectfont スケール & \color[cmyk]{1,1,0,0} \fontsize{20}{20}\selectfont 技術(例) & \color[cmyk]{1,1,0,0} \fontsize{20}{20}\selectfont 理論(例) & \color[cmyk]{1,1,0,0} \fontsize{20}{20}\selectfont  主な力 \\
+\hline
+\color[cmyk]{1,1,0,0} 核子 & \color[cmyk]{1,1,0,0} 格子ゲージシミュレーション & \color[cmyk]{1,1,0,0} 量子色力学 & \color[cmyk]{1,1,0,0} 強い力 \\
+\color[cmyk]{1,1,0,0} 原子 & \color[cmyk]{1,1,0,0} 量子化学計算 & \color[cmyk]{1,1,0,0} 量子力学 & \color[cmyk]{1,1,0,0} 電磁気力 \\
+\color[cmyk]{1,1,0,0} 分子 & \color[cmyk]{1,1,0,0} 密度汎関数法 & \color[cmyk]{1,1,0,0} 量子力学 & \color[cmyk]{1,1,0,0} 電磁気力 \\
+\color[cmyk]{1,1,0,0} 分子の集団 & \color[cmyk]{1,1,0,0} 分子動力学 & \color[cmyk]{1,1,0,0} 古典力学 & \color[cmyk]{1,1,0,0} 電磁気力 \\
+\color[cmyk]{1,1,0,0} 組織 & \color[cmyk]{1,1,0,0} FEM/CA/CALPHAD & \color[cmyk]{1,1,0,0} 複合 & \color[cmyk]{1,1,0,0} 電磁気力 \\
+%\color[cmyk]{1,1,0,0} 材料 & \color[cmyk]{1,1,0,0} FEM & \color[cmyk]{1,1,0,0} 複合 & \color[cmyk]{1,1,0,0}  \\
+\color[cmyk]{1,1,0,0} 部材 & \color[cmyk]{1,1,0,0} FEM & \color[cmyk]{1,1,0,0} 複合 & \color[cmyk]{1,1,0,0} 電磁気力 \\
+\color[cmyk]{1,1,0,0} 構造物  & \color[cmyk]{1,1,0,0} FEM & \color[cmyk]{1,1,0,0} 複合 & \color[cmyk]{1,1,0,0} 電磁気力/重力 \\
+\color[cmyk]{1,1,0,0} 構造物+環境  & \color[cmyk]{1,1,0,0} FEM/ナビエ・ストークスEq & \color[cmyk]{1,1,0,0} 複合/流体/粉体 & \color[cmyk]{1,1,0,0} 電磁気力/重力 \\
+\end{tabular}
+\end{center}
+\color[cmyk]{1,1,0,0}
+\fontsize{14}{20}\selectfont
+※結晶、準結晶もある
+\end{landscape}
+\end{slide}
+%%-----end     03-----%%
+
+%%-----start   03-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{0.3,0.3,0,0}
+\fontsize{30}{20}\selectfont
+背景:
+
+\color[cmyk]{1,1,0,0}
+\fontsize{20}{20}\selectfont
+マルチスケールの例 \\
+\end{center}
+\
+
+\color[cmyk]{1,1,0,0}
+\fontsize{20}{20}\selectfont
+高温超伝導開発は、ミクロ(原子レベル)な特性がマクロな特性(組織レベル)に影響を及ぼす現象を研究する。
+
+$\rightarrow$ 電子の振る舞い（が、フェルミ-ディラック統計かボーズ-アインシュタイン統計か）というミクロな性質が、マクロな抵抗という性質の起因となる。
+\end{landscape}
+\end{slide}
+%%-----end     03-----%%
+
+
+%%-----start   03-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{0.3,0.3,0,0}
+\fontsize{30}{20}\selectfont
+背景:
+
+\color[cmyk]{1,1,0,0}
+\fontsize{20}{20}\selectfont
+マルチフィジクスの例 \\
+\end{center}
+\
+
+\color[cmyk]{1,1,0,0}
+\fontsize{20}{20}\selectfont
+固体電池開発は、電磁気特性だけでなく、固体の相を保つという、別の側面においても開発要素がある。
+\end{landscape}
+\end{slide}
+%%-----end     03-----%%
+
+
+%%-----start   03-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{0.3,0.3,0,0}
+\fontsize{30}{20}\selectfont
+背景: 情報学の視点から
+
+\color[cmyk]{1,1,0,0}
+\fontsize{20}{20}\selectfont
+MI（マテリアルズインテグレーション/マテリアルズインフォマティクス）を加速させるためには、マルチスケール・マルチフィジクス（つまり異なる科学分野）の知識/データ形式を同じ枠組で取り扱う必要がある \\
+%$\rightarrow$ データフェデレーションを実現し、これを通してより効率的なマテリアルズインフォマティクスを目指す。
+\end{center}
+\color[cmyk]{1,1,0,0}
+\fontsize{20}{20}\selectfont
+\begin{itemize}
+\item すでに行われているチャレンジである
+\item サービスや実装もある\\
+  - modelica \\
+  - Wolfram Data Repository \\
+\item しかし、我々は、従来とは異なる手法を用いる \\
+  $\rightarrow$ 従来はデータを直接的に統一形式に統合する方式を用いていたのに対して\\
+  - 「データ形式」と「データ形式定義」を分離する \\
+  - 「知識」を統一せず、「知識の記述形式」を統一する \\
+\end {itemize}
+\end{landscape}
+\end{slide}
+%%-----end     03-----%%
+
+
+%%-----start   03-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{0.3,0.3,0,0}
+\fontsize{30}{20}\selectfont
+ゴール:
+
+\color[cmyk]{1,1,0,0}
+\fontsize{20}{20}\selectfont
+あらゆる科学分野の知識を統一的/形式的に記述可能な言語、それによるデータ形式定義記述の実現 \\
+\
+$\rightarrow$ 「トランスレーショナルリサーチ」は、どちらかといえば垂直展開を意味するが、我々は「垂直水平同時展開」を可能とするトランスレーショナルリサーチの「形式的」な枠組みを必要としている、とも言える。
+\end{center}
+\color[cmyk]{1,1,0,0}
+\fontsize{20}{20}\selectfont
+\begin{itemize}
+\setlength{\itemsep}{2mm}
+\setlength{\parskip}{0mm}
+\item 木構造とグラフ構造を同じ構文で記述する \\
+  $\rightarrow$ データ形式（テンソル）と辞書（グラフ）を同じシンタックスで記述する必要がある。
+\item パーサーとソルバーを分離する \\
+  $\rightarrow$ 知識は不整合や矛盾を含むものである。ソルバーがあると成功しない。 \\
+  $\rightarrow$ その代わり、既存ソルバーと接続できるようにする。
+\item 知識は抽象度を高くし、即値を含ませない（例：円周率は"円周率"であり3.14 ... ではない）。ただし、言語としての量指定子は必要。 \\
+  $\rightarrow$ その代わり、即値（実データ）をバインドできるようにする。
+\item 当然、辞書を解析し単位変換等の項目間関係性を取り出したい \\
+\end {itemize}
+\end{landscape}
+\end{slide}
+%%-----end     03-----%%
+
+%%-----start   03-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{0.3,0.3,0,0}
+\fontsize{30}{20}\selectfont
+出口:
+
+\color[cmyk]{1,1,0,0}
+\fontsize{20}{20}\selectfont
+あらゆる目的において、「同等」なデータを「同等でない形式」のデータから抽出／統合し、機械学習用データとして再構成する \\ 
+$\rightarrow$ 機械のためのデータフェデレーション \\
+\
+\end{center}
+\color[cmyk]{1,1,0,0}
+\fontsize{20}{20}\selectfont
+\begin{itemize}
+\setlength{\itemsep}{2mm}
+%\setlength{\parskip}{0mm}
+\item 入出力関係、報酬関係も記述可能
+\item データ次元も記述可能
+\item 「同等」かどうかを判定する根拠(辞書)も記述可能
+\item 必要ならば学習用ネットワークも記述可能
+\end {itemize}
+\end{landscape}
+\end{slide}
+%%-----end     03-----%%
+
+
+%%-----start   03-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{0.3,0.3,0,0}
+\fontsize{30}{20}\selectfont
+目的:
+
+\end{center}
+\
+
+\color[cmyk]{1,1,0,0}
+\fontsize{20}{20}\selectfont
+\begin{itemize}
+\setlength{\itemsep}{2mm}
+%\setlength{\parskip}{0mm}
+\item 知識とデータ構造を形式的に記述できる言語の開発 （本日の話） \\
+1)項参照と、2)データバインドにより、\\
+  $\rightarrow$ 知識はトリプルに断片化。 \\
+  $\rightarrow$ 全体でグラフ構造を構成。 \\
+  %$\rightarrow$ グラフと木（テンソル）を同じ枠組で記述。 
+  $\rightarrow$ 木（テンソル）のノードにデータをバインドしてデータ構造を表現。 
+\item 辞書形式の開発 （本日の話）\\
+  $\rightarrow$ 当該言語を用いて辞書を記述する。 
+\item 辞書アナライザの開発 \\
+  $\rightarrow$ 辞書のグラフ構造を解析する。 
+%\item さまざまなデータ形式をアクセプトする一方、デフォルトデータ形式も規定する 
+%\item データフェデレーションフレームワークの一部となる
+\end {itemize}
+\end{landscape}
+\end{slide}
+%%-----end     03-----%%
+
+%%-----start   03-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\newcommand\chcol[4]{\textcolor[rgb]{#1,#2,#3}{#4}}
+\color[cmyk]{0.3,0.3,0,0}
+\fontsize{30}{20}\selectfont
+tq:
+
+\end{center}
+\
+
+\fontsize{20}{20}\selectfont
+%\begin{verbatim}
+\ \ \ \ \ \ \ \ \ \ \ \ 
+\color{red}\textcircled{1} \ \ \ \ \ \ \ \ \ 
+\color{blue}\textcircled{3} \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 
+\color{green}\textcircled{4} \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\color{magenta} \ \ \ \ \ \ \ \ \ \ \ \ \ \ 
+\color{cyan}\textcircled{2}
+\\
+\color{black}$<tq>$::
+\color{red}$<label>$
+\color{blue}$<reference>$
+\color{green}$<operator>$
+\color{magenta}$<name>$
+\color{cyan}$<bind>$
+\color{black}$(<tq>,...)$
+%\end{verbatim}
+\
+
+e.g.\\
+\color{red}\#1\color{blue}\$\#2\color{green}\$Op\$\color{magenta}Name\color{black}(\color{red}\#2\color{magenta}Name2\color{cyan}[2]\color{black}) \\
+\color{red}\#1\color{blue}\$\#2\color{green}\$Op\$\color{magenta}Name@\#2Name2@\#2Name2\color{black}(\color{red}\#2\color{magenta}Name2,[2]@\color{black}(\color{magenta}Length\color{black},\color{magenta}Weight\color{black}))
+\end{landscape}
+\end{slide}
+%%-----end     03-----%%
+
+%%-----start   03-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{0.3,0.3,0,0}
+\fontsize{30}{20}\selectfont
+tq: 項参照
+
+\end{center}
+\
+
+\color[cmyk]{1,1,0,0}
+\fontsize{20}{20}\selectfont
+\
+\begin{tabular}{rlll}
+\color[cmyk]{1,1,0,0} \fontsize{20}{20}\selectfont 表現 & \color[cmyk]{1,1,0,0} \fontsize{20}{20}\selectfont 参照部 & \color[cmyk]{1,1,0,0} \fontsize{20}{20}\selectfont 被参照部 & \color[cmyk]{1,1,0,0} \fontsize{20}{20}\selectfont   被参照部バインド表現\\
+\hline
+\color{cyan} \$\#1\color[cmyk]{1,1,0,0}f & \color{cyan} \$\#1 & \color[cmyk]{1,1,0,0}  & \color[cmyk]{1,1,0,0} \$\#1f \\
+\color[cmyk]{1,1,0,0} (\color{cyan}\$\#1\color[cmyk]{1,1,0,0},\color{red}\#1\color[cmyk]{1,1,0,0}) & \color{cyan}  \$\#1 & \color{red} \#1 & \color[cmyk]{1,1,0,0} (\$\#1\color{magenta}@\#1\color[cmyk]{1,1,0,0},\#1)  \\
+\color{cyan} \$\#1\color[cmyk]{1,1,0,0}f(\color{red}\#1g\color[cmyk]{1,1,0,0}) & \color{cyan} \$\#1 & \color{red} \#1g & \color[cmyk]{1,1,0,0} \$\#1\color{magenta}@\#1g\color[cmyk]{1,1,0,0}(\#1g) \\
+\color{red} \#1f\color[cmyk]{1,1,0,0}(\color{cyan}\$\#1\color[cmyk]{1,1,0,0}g) & \color{cyan} \$\#1 & \color{red} \#1f & \color[cmyk]{1,1,0,0} \#1f(\$\#1\color[cmyk]{1,1,0,0}g\color{magenta}@\#1f\color[cmyk]{1,1,0,0}) \\
+\end{tabular}
+
+\end{landscape}
+\end{slide}
+%%-----end     03-----%%
+
+%%-----start   03-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{0.3,0.3,0,0}
+\fontsize{30}{20}\selectfont
+tq: データバインド
+
+\end{center}
+\
+
+\color[cmyk]{1,1,0,0}
+\fontsize{20}{20}\selectfont
+\
+\begin{tabular}{rll}
+\color[cmyk]{1,1,0,0} \fontsize{20}{20}\selectfont 表現 & \color[cmyk]{1,1,0,0} \fontsize{20}{20}\selectfont データ & \color[cmyk]{1,1,0,0} \fontsize{20}{20}\selectfont  データバインド表現   \\
+\hline
+\color[cmyk]{1,1,0,0} [1] & \color[cmyk]{1,1,0,0} L,W,22,3,21,5 & \color[cmyk]{1,1,0,0} [1]\color{magenta}@(L)  \\
+\color[cmyk]{1,1,0,0} [2] & \color[cmyk]{1,1,0,0} L,W,22,3,21,5 & \color[cmyk]{1,1,0,0} [2]\color{magenta}@(L,W)  \\
+\color[cmyk]{1,1,0,0} [2]([2]) & \color[cmyk]{1,1,0,0} L,W,22,3,21,5 & \color[cmyk]{1,1,0,0} [2]([2]\color{magenta}@(L,W,22,3)\color[cmyk]{1,1,0,0})  \\
+\color[cmyk]{1,1,0,0} H1[2](H2[2]) & \color[cmyk]{1,1,0,0} L,W,22,3,21,5 & \color[cmyk]{1,1,0,0} H1[2](H2[2]\color{magenta}@(L,W,22,3)\color[cmyk]{1,1,0,0})  \\
+\end{tabular}
+
+\end{landscape}
+\end{slide}
+%%-----end     03-----%%
+
+
+%%-----start   03-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{0.3,0.3,0,0}
+\fontsize{30}{20}\selectfont
+tq: 項参照とデータバインドを使ったデータの再構成
+
+\end{center}
+\
+
+\color[cmyk]{1,1,0,0}
+\fontsize{20}{20}\selectfont
+データ: Length,Weight,mm,kg,1,2 322,4,5,68 \vspace{3mm} \\
+入力形式定義: (\#1[2],\#2[2],[3](\#4[2])) \vspace{3mm}\\
+出力形式定義: \$PI\$(\$\#1,Quantity(\$\#4,\$\#2)) \vspace{3mm}\\
+出力: \\
+( \\
+\ (\ (\color{magenta}Length\txbase,Quantity(\color{magenta}1\txbase,\color{magenta}mm\txbase)),(\color{magenta}Weight\txbase,Quantity(\color{magenta}2\txbase,\color{magenta}kg\txbase))\ ),\\
+\ (\ (\color{magenta}Length\txbase,Quantity(\color{magenta}322\txbase,\color{magenta}mm\txbase)),(\color{magenta}Weight\txbase,Quantity(\color{magenta}4\txbase,\color{magenta}kg\txbase))\ ), \\
+\ (\ (\color{magenta}Length\txbase,Quantity(\color{magenta}5\txbase,\color{magenta}mm\txbase)),(\color{magenta}Weight\txbase,Quantity(\color{magenta}68\txbase,\color{magenta}kg\txbase))\ ) \\
+)
+
+\
+
+\fontsize{14}{20}\selectfont
+※改行は便宜上
+\end{landscape}
+\end{slide}
+%%-----end     03-----%%
+
+
+%%-----start   03-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{0.3,0.3,0,0}
+\fontsize{30}{20}\selectfont
+tq: トリプル表現
+
+\end{center}
+\
+
+\color[cmyk]{1,1,0,0}
+\fontsize{20}{20}\selectfont
+\
+\begin{tabular}{rlll}
+\color[cmyk]{1,1,0,0} \fontsize{20}{20}\selectfont  & \color[cmyk]{1,1,0,0} \fontsize{20}{20}\selectfont P(Arrow) & \color[cmyk]{1,1,0,0} \fontsize{20}{20}\selectfont S(Dom) & \color[cmyk]{1,1,0,0} \fontsize{20}{20}\selectfont  O(Cod) \\
+\hline
+\color[cmyk]{1,1,0,0} P(S,O) & \color[cmyk]{1,1,0,0} P & \color[cmyk]{1,1,0,0} S & \color[cmyk]{1,1,0,0} O \\
+\color[cmyk]{1,1,0,0} (S(\$\#1P),\#1O) & \color[cmyk]{1,1,0,0} P & \color[cmyk]{1,1,0,0} S & \color[cmyk]{1,1,0,0} O \\
+\color[cmyk]{1,1,0,0} S(\$\#1P) / (S(\$\#1P),) & \color[cmyk]{1,1,0,0} P & \color[cmyk]{1,1,0,0} S & \color[cmyk]{1,1,0,0} $<$無名$>$ \\
+\color[cmyk]{1,1,0,0} S(O) & \color[cmyk]{1,1,0,0} $<$無名$>$ & \color[cmyk]{1,1,0,0} S & \color[cmyk]{1,1,0,0} O \\
+\color[cmyk]{1,1,0,0} (,) & \color[cmyk]{1,1,0,0} $<$無名$>$ & \color[cmyk]{1,1,0,0} $<$無名$>$ & \color[cmyk]{1,1,0,0} $<$無名$>$ \\
+\end{tabular}
+\end{landscape}
+\end{slide}
+%%-----end     03-----%%
+
+
+%%-----start   03-----%%
+\vspace{-10mm}
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{0.3,0.3,0,0}
+\fontsize{30}{20}\selectfont
+tq: トリプルと項参照を使ったグラフ表現
+\end{center}
+\
+\color[cmyk]{1,1,0,0}
+\fontsize{20}{20}\selectfont
+\$G\$(($<$オブジェクトリスト$>$),($<$トリプルリスト$>$))
+\
+
+\begin{tabular}{p{60mm}p{100mm}p{80mm}}
+\color[cmyk]{1,1,0,0} \fontsize{20}{20}\selectfont 表現 & \color[cmyk]{1,1,0,0} \fontsize{20}{20}\selectfont グラフ構造 & \color[cmyk]{1,1,0,0} \fontsize{20}{20}\selectfont 隣接行列  \\
+\hline
+\color[cmyk]{1,1,0,0}\fontsize{16}{20}\selectfont ((\#1A,\#2B,\#3C), (f(\$\#1,\$\#2), g(\$\#2,\$\#3))) & \color[cmyk]{1,1,0,0} \epsfig{file=g1.eps,height=10mm} &  
+\begin{spacing}{0.4}
+\color[cmyk]{1,1,0,0}\fontsize{12}{20}\selectfont
+\vspace{-10mm}
+\begin{verbatim}
+,,2,3,,,[:f:6],7,8,,,,
+,,,,,,,[6->:$#1:7->2],,,,,
+,,,,,,,,[6->:$#2:8->3],,,,
+,,,3,4,,,,,[:g:9],10,11,
+,,,,,,,,,,[9->:$#2:10->3],,
+,,,,,,,,,,,[9->:$#3:11->4],
+\end{verbatim}
+\end{spacing}
+ \\ 
+\color[cmyk]{1,1,0,0}\fontsize{16}{20}\selectfont \vspace{-20mm} ((\#1A,\#2B,\#3C), ((\$\#1,\$\#2), (\$\#1,\$\#3), (\$\#2,\$\#1), (\$\#2,\$\#3), (\$\#3,\$\#1), (\$\#3,\$\#2))) & \color[cmyk]{1,1,0,0} \vspace{-20mm} \epsfig{file=ge.eps,height=50mm} & \vspace{-20mm}
+\begin{spacing}{0.2}
+\color[cmyk]{1,1,0,0}\fontsize{6}{20}\selectfont
+\vspace{-10mm}
+\begin{verbatim}
+,,,,,,,[6->:$#1:7->2],,,,,,,,,,,,,,,,,
+,,,,,,,,[6->:$#2:8->3],,,,,,,,,,,,,,,,
+,,,,,,,,,,[9->:$#1:10->2],,,,,,,,,,,,,,
+,,,,,,,,,,,[9->:$#3:11->4],,,,,,,,,,,,,
+,,,,,,,,,,,,,[12->:$#2:13->3],,,,,,,,,,,
+,,,,,,,,,,,,,,[12->:$#1:14->2],,,,,,,,,,
+,,,,,,,,,,,,,,,,[15->:$#2:16->3],,,,,,,,
+,,,,,,,,,,,,,,,,,[15->:$#3:17->4],,,,,,,
+,,,,,,,,,,,,,,,,,,,[18->:$#3:19->4],,,,,
+,,,,,,,,,,,,,,,,,,,,[18->:$#1:20->2],,,,
+,,,,,,,,,,,,,,,,,,,,,,[21->:$#3:22->4],,
+,,,,,,,,,,,,,,,,,,,,,,,[21->:$#2:23->3],
+\end{verbatim}
+\end{spacing}
+ \\
+\end{tabular}
+\end{landscape}
+\end{slide}
+%%-----end     03-----%%
+
+
+%%-----start   03-----%%
+\vspace{-10mm}
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{0.3,0.3,0,0}
+\fontsize{30}{20}\selectfont
+tq: 辞書表現
+\end{center}
+\
+\color[cmyk]{1,1,0,0}
+\fontsize{20}{20}\selectfont
+
+グラフ: \$G\$(($<$オブジェクトリスト$>$),($<$トリプルリスト$>$)) \\
+$\downarrow$ そのまま!! ただし、辞書トリプルのSとOには木構造を許す\\
+辞書: \$D\$(($<$オブジェクトリスト$>$),($<$トリプルリスト$>$)) \\
+
+e.g. \\
+((\#1A,\#2B,\#3C),(f(\$\#1,\$\#2),\$X\$near(\$\#2,\$\#3), \\
+\ \underline{\$def\$(\underline{f},\underline{\underline{((a,b),\$eq\$(a,b))}})},...)) \\
+((\#1A,\#2B,\#3C),(f(\$\#1,\$\#2),\$X\$near(\$\#2,\$\#3), \\
+\ \underline{\$def\$(\underline{f},\underline{\underline{((a,b),\$eq\$(a,\$pow\$(b,2)))}})},...)) \\
+\end{landscape}
+\end{slide}
+%%-----end     03-----%%
+
+
+%%-----start   03-----%%
+\begin{slide}
+\begin{landscape}
+\begin{center}
+\color[cmyk]{0.3,0.3,0,0}
+\fontsize{30}{20}\selectfont
+開発状況: 実装済み部分
+
+\end{center}
+\
+\color[cmyk]{1,1,0,0}
+\fontsize{20}{20}\selectfont
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\setlength{\parskip}{0mm}
+\item 木構造パーサー
+\item ラベルによる項参照
+\item データバインド
+\item データリストの内積化
+\item アンパック（木構造の平坦化）
+\item クオーティング
+\item リテラライズ（オペレーション回避）
+\end {itemize}
+
+\end{landscape}
+\end{slide}
+%%-----end     03-----%%
+
+
+\end{document}
